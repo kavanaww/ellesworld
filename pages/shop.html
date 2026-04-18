@@ -520,6 +520,56 @@ function updateOrderInstructions(subtotal, venmoTotal) {
 
 function closeCheckout() { document.getElementById("modalOverlay").classList.remove("open"); }
 
+function goToStep2() {
+  if (!cart.length) return;
+  // Populate step 2 order summary
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById("modalItems2").innerHTML = `
+    <div style="background:#F5F0EB;border-radius:8px;padding:16px;margin-bottom:4px;">
+      ${cart.map(i => `<div style="display:flex;justify-content:space-between;padding:5px 0;font-size:14px;border-bottom:1px solid #E8E2DA;"><span>${i.group} ${i.variant} x${i.qty}</span><span style="font-weight:600;">$${(i.price*i.qty).toFixed(2)}</span></div>`).join("")}
+      <div style="display:flex;justify-content:space-between;padding:10px 0 0;font-size:17px;font-weight:700;"><span>Total</span><span style="color:#9B1B1B;">$${subtotal.toFixed(2)}</span></div>
+    </div>`;
+  // Set hidden fields
+  document.getElementById("hiddenOrderItems").value = cart.map(i => `${i.group} ${i.variant} x${i.qty} ($${(i.price*i.qty).toFixed(2)})`).join(" | ");
+  document.getElementById("hiddenOrderTotal").value = "$" + subtotal.toFixed(2);
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+}
+
+function goToStep1() {
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step1").style.display = "block";
+}
+
+function clearCart() {
+  cart = [];
+  updateCartUI();
+}
+
+// Formspree submit
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("orderForm");
+  if (form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      fetch("https://formspree.io/f/mgoryakp", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(r => {
+        if (r.ok) {
+          document.getElementById("step2").style.display = "none";
+          document.getElementById("step3").style.display = "block";
+        } else {
+          alert("Something went wrong. Please email orders@ellesworldresearch.net directly.");
+        }
+      }).catch(() => {
+        alert("Something went wrong. Please email orders@ellesworldresearch.net directly.");
+      });
+    });
+  }
+});
+
 function filterCat(cat, btn) {
   document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
   btn.classList.add("active");
