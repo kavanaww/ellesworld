@@ -409,9 +409,39 @@
           <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Email Address *</label>
           <input type="email" name="email" placeholder="your@email.com" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
         </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Street Address *</label>
+          <input type="text" name="street_address" placeholder="123 Main St" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Apt / Suite / Unit (optional)</label>
+          <input type="text" name="address_line2" placeholder="Apt 4B" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 80px;gap:10px;margin-bottom:20px;">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">City *</label>
+            <input type="text" name="city" placeholder="City" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">State *</label>
+            <select name="state" required style="width:100%;padding:11px 10px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;background:#fff;appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 8px center;padding-right:24px;">
+              <option value="">--</option>
+              <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+              <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+              <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+              <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+              <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+              <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+              <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+              <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+              <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+              <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+            </select>
+          </div>
+        </div>
         <div style="margin-bottom:20px;">
-          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Shipping Address *</label>
-          <textarea name="shipping_address" placeholder="Street, City, State, ZIP" required rows="3" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;resize:vertical;"></textarea>
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">ZIP Code *</label>
+          <input type="text" name="zip" placeholder="63301" required pattern="\d{5}(-\d{4})?" inputmode="numeric" maxlength="10" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
         </div>
         <div style="margin-bottom:20px;">
           <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Notes (optional)</label>
@@ -902,6 +932,22 @@ document.addEventListener("DOMContentLoaded", function() {
       const discountAmt = subtotal * discount;
       const shippingCost = getModalShipping(subtotal);
       const total = (subtotal - discountAmt + shippingCost).toFixed(2);
+
+      // Assemble structured address fields into one hidden field for the email
+      const street  = (form.street_address ? form.street_address.value : "").trim();
+      const line2   = (form.address_line2  ? form.address_line2.value  : "").trim();
+      const city    = (form.city           ? form.city.value           : "").trim();
+      const state   = (form.state          ? form.state.value          : "").trim();
+      const zip     = (form.zip            ? form.zip.value            : "").trim();
+      const fullAddr = [street, line2, city + (state ? ", " + state : ""), zip].filter(Boolean).join(", ");
+      let hiddenAddr = form.querySelector('input[name="shipping_address"]');
+      if (!hiddenAddr) {
+        hiddenAddr = document.createElement("input");
+        hiddenAddr.type = "hidden";
+        hiddenAddr.name = "shipping_address";
+        form.appendChild(hiddenAddr);
+      }
+      hiddenAddr.value = fullAddr;
 
       fetch("https://formspree.io/f/mgoryakp", {
         method: "POST",
