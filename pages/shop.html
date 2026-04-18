@@ -684,11 +684,11 @@ function updateCartUI() {
   const FREE_THRESHOLD = 250;
   const progressEl = document.getElementById("shippingProgress");
   if (progressEl) {
-    if (total >= FREE_THRESHOLD) {
+    if (subtotal >= FREE_THRESHOLD) {
       progressEl.innerHTML = `<div style="background:#f0f8f0;border:1px solid #c3e6c3;border-radius:8px;padding:10px 12px;font-size:12px;color:#2a7a2a;font-weight:600;text-align:center;">🎉 You qualify for FREE standard shipping!</div>`;
     } else {
-      const remaining = (FREE_THRESHOLD - total).toFixed(2);
-      const pct = Math.min((total / FREE_THRESHOLD) * 100, 100);
+      const remaining = (FREE_THRESHOLD - subtotal).toFixed(2);
+      const pct = Math.min((subtotal / FREE_THRESHOLD) * 100, 100);
       progressEl.innerHTML = `
         <div style="font-size:12px;color:#888;margin-bottom:6px;text-align:center;">Add <strong style="color:#9B1B1B;">$${remaining}</strong> more for free standard shipping</div>
         <div style="background:#E8E2DA;border-radius:20px;height:6px;overflow:hidden;">
