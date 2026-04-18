@@ -239,7 +239,138 @@
   </div>
   <div class="cart-items" id="cartItems"></div>
   <div class="cart-footer">
-    <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+    <div id="shippingProgress" style="margin-bottom:14px;"></div>
+    <div id="bacWaterUpsell" style="display:none;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:8px;"></div>
+    <div class="cart-total"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
+    <p class="venmo-note">Payment via Venmo after order placement</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+
+    <!-- STEP 1: Order Review -->
+    <div id="step1">
+      <h2>Review Your Order</h2>
+      <p>Confirm your items then continue to place your order.</p>
+      <div class="modal-items" id="modalItems"></div>
+      <button class="checkout-btn" style="margin-top:20px;margin-bottom:10px;" onclick="goToStep2()">Continue to Place Order →</button>
+      <button class="modal-close-btn" onclick="closeCheckout()">Back to Cart</button>
+    </div>
+
+    <!-- STEP 2: Customer Info -->
+    <div id="step2" style="display:none;">
+      <h2>Place Your Order</h2>
+      <p>Fill in your details and we'll receive your order instantly.</p>
+      <div class="modal-items" id="modalItems2"></div>
+
+      <form id="orderForm" style="margin-top:16px;">
+        <input type="hidden" name="_subject" value="New Order - Elle's World Research" />
+        <input type="hidden" name="order_items" id="hiddenOrderItems" />
+        <input type="hidden" name="order_total" id="hiddenOrderTotal" />
+        <input type="hidden" name="promo_code" id="hiddenPromo" />
+        <input type="hidden" name="shipping_method" id="hiddenShipping" />
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Full Name *</label>
+          <input type="text" name="name" placeholder="Your full name" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Email Address *</label>
+          <input type="email" name="email" placeholder="your@email.com" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Shipping Address *</label>
+          <textarea name="shipping_address" placeholder="Street, City, State, ZIP" required rows="3" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;resize:vertical;"></textarea>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Payment Method</label>
+          <select name="payment_method" id="paymentSelect" onchange="updateOrderTotal()" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;">
+            <option value="venmo">💙 Venmo @EllesWorldResearch — 10% off automatically</option>
+            <option value="zelle">💜 Zelle — (707) 291-9669</option>
+          </select>
+        </div>
+
+        <div style="margin-bottom:14px;" id="promoRow">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Promo Code <span style="font-weight:400;text-transform:none;letter-spacing:0;">(not combinable with Venmo discount)</span></label>
+          <div style="display:flex;gap:8px;">
+            <input type="text" id="promoInput" placeholder="Enter code" style="flex:1;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+            <button type="button" onclick="applyPromo()" style="background:var(--teal);color:#fff;border:none;border-radius:4px;padding:0 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:DM Sans,sans-serif;">Apply</button>
+          </div>
+          <div id="promoMsg" style="font-size:12px;margin-top:6px;"></div>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Shipping Method</label>
+          <select name="shipping_type" id="shippingSelect" onchange="updateOrderTotal()" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;">
+            <option value="standard">Standard Shipping — $10.00 (Free over $250)</option>
+            <option value="twoday">2-Day Shipping — $30.00</option>
+          </select>
+        </div>
+
+        <div id="orderSummaryBox" style="background:#F5F0EB;border-radius:8px;padding:16px;margin-bottom:16px;font-size:14px;"></div>
+
+        <div style="margin-bottom:16px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Notes (optional)</label>
+          <textarea name="notes" placeholder="Any special instructions?" rows="2" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;resize:vertical;"></textarea>
+        </div>
+
+        <button type="submit" class="checkout-btn" style="margin-bottom:10px;">Submit Order →</button>
+        <button type="button" class="modal-close-btn" onclick="goToStep1()">← Back</button>
+      </form>
+    </div>
+
+    <!-- STEP 3: Confirmation -->
+    <div id="step3" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:56px;margin-bottom:16px;">✅</div>
+      <h2 style="margin-bottom:12px;">Order Received!</h2>
+      <p style="margin-bottom:20px;" id="confirmMsg"></p>
+      <button onclick="closeCheckout();clearCart();" style="display:inline-block;padding:14px 32px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:#9B1B1B;color:#fff;border:none;border-radius:3px;cursor:pointer;">Done</button>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>Product Catalog</h1>
+  <p>All products are third-party tested · Research use only · Not for human consumption</p>
+</div>
+<div class="disclaimer-bar">
+  Must be 18+ · Complete the <a href="agreement.html" style="color:#fff;text-decoration:underline;">Research Use Only Agreement</a> before ordering
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCat('all',this)">All Products</button>
+  <button class="filter-btn" onclick="filterCat('healing',this)">🩹 Tissue Repair</button>
+  <button class="filter-btn" onclick="filterCat('glp',this)">🔥 Metabolic</button>
+  <button class="filter-btn" onclick="filterCat('ghrp',this)">💪 Growth Hormone</button>
+  <button class="filter-btn" onclick="filterCat('cognitive',this)">🧠 Cognitive</button>
+  <button class="filter-btn" onclick="filterCat('longevity',this)">🧬 Longevity</button>
+  <button class="filter-btn" onclick="filterCat('cosmetic',this)">💅 Aesthetic</button>
+  <button class="filter-btn" onclick="filterCat('mitochondrial',this)">⚡ Cellular Energy</button>
+  <button class="filter-btn" onclick="filterCat('mood',this)">🌙 Mood & Sleep</button>
+  <button class="filter-btn" onclick="filterCat('immune',this)">🛡️ Immune Support</button>
+  <button class="filter-btn" onclick="filterCat('sexual',this)">🍆💦 Sexual Wellness</button>
+  <button class="filter-btn" onclick="filterCat('recon',this)">💧 Reconstitution</button>
+</div>
+
+<div class="shop-main" id="shopMain"></div>
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div id="shippingProgress" style="margin-bottom:14px;"></div>
+    <div id="bacWaterUpsell" style="display:none;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;display:flex;align-items:center;justify-content:space-between;gap:8px;"></div>
+    <div class="cart-total"><span>Subtotal</span><span id="cartTotal">$0.00</span></div>
     <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
     <p class="venmo-note">Payment via Venmo after order placement</p>
   </div>
@@ -473,6 +604,37 @@ function updateCartUI() {
         <button class="qty-btn" onclick="changeQty(${i.id},1)">+</button>
       </div>
     </div>`).join("");
+
+  // Free shipping progress bar
+  const FREE_THRESHOLD = 250;
+  const progressEl = document.getElementById("shippingProgress");
+  if (progressEl) {
+    if (total >= FREE_THRESHOLD) {
+      progressEl.innerHTML = `<div style="background:#f0f8f0;border:1px solid #c3e6c3;border-radius:8px;padding:10px 12px;font-size:12px;color:#2a7a2a;font-weight:600;text-align:center;">🎉 You qualify for FREE standard shipping!</div>`;
+    } else {
+      const remaining = (FREE_THRESHOLD - total).toFixed(2);
+      const pct = Math.min((total / FREE_THRESHOLD) * 100, 100);
+      progressEl.innerHTML = `
+        <div style="font-size:12px;color:#888;margin-bottom:6px;text-align:center;">Add <strong style="color:#9B1B1B;">$${remaining}</strong> more for free standard shipping</div>
+        <div style="background:#E8E2DA;border-radius:20px;height:6px;overflow:hidden;">
+          <div style="background:#9B1B1B;height:100%;width:${pct}%;border-radius:20px;transition:width 0.3s;"></div>
+        </div>`;
+    }
+  }
+
+  // BAC Water upsell
+  const bacInCart = cart.some(i => i.group === "BAC Water");
+  const upsellEl = document.getElementById("bacWaterUpsell");
+  if (upsellEl) {
+    if (!bacInCart && cart.length > 0) {
+      upsellEl.style.display = "flex";
+      upsellEl.innerHTML = `
+        <div style="flex:1;">💧 <strong>Don't forget BAC Water!</strong><br><span style="color:#888;">Required for reconstitution — from $5</span></div>
+        <button onclick="addToCart(44)" style="background:#9B1B1B;color:#fff;border:none;border-radius:4px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:DM Sans,sans-serif;">Add 3mL</button>`;
+    } else {
+      upsellEl.style.display = "none";
+    }
+  }
 }
 
 function openCart() {
@@ -519,6 +681,114 @@ function updateOrderInstructions(subtotal, venmoTotal) {
 }
 
 function closeCheckout() { document.getElementById("modalOverlay").classList.remove("open"); }
+
+function goToStep2() {
+  if (!cart.length) return;
+  appliedPromo = null;
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+  updateOrderTotal();
+}
+
+function goToStep1() {
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step1").style.display = "block";
+}
+
+function clearCart() {
+  cart = [];
+  updateCartUI();
+}
+
+function applyPromo() {
+  const input = document.getElementById("promoInput").value.trim().toUpperCase();
+  const payment = document.getElementById("paymentSelect").value;
+  const msg = document.getElementById("promoMsg");
+  if (payment === "venmo") {
+    msg.style.color = "#c0392b";
+    msg.textContent = "Promo codes cannot be combined with the Venmo discount.";
+    appliedPromo = null;
+    updateOrderTotal();
+    return;
+  }
+  if (PROMO_CODES[input]) {
+    appliedPromo = input;
+    msg.style.color = "#2a7a2a";
+    msg.textContent = "✓ Code applied — " + (PROMO_CODES[input] * 100) + "% off!";
+  } else {
+    appliedPromo = null;
+    msg.style.color = "#c0392b";
+    msg.textContent = "Invalid code.";
+  }
+  updateOrderTotal();
+}
+
+function updateOrderTotal() {
+  const payment = document.getElementById("paymentSelect").value;
+  const shipping = document.getElementById("shippingSelect").value;
+  const subtotal = getSubtotal();
+  const discount = getDiscount(payment, appliedPromo);
+  const shippingCost = getShipping(shipping, subtotal, discount);
+  const discountAmt = subtotal * discount;
+  const total = subtotal - discountAmt + shippingCost;
+
+  // Show/hide promo row
+  document.getElementById("promoRow").style.display = payment === "venmo" ? "none" : "block";
+  if (payment === "venmo") {
+    appliedPromo = null;
+    document.getElementById("promoMsg").textContent = "";
+    document.getElementById("promoInput").value = "";
+  }
+
+  let summaryHTML = cart.map(i => `<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid #E8E2DA;"><span>${i.group} ${i.variant} x${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`).join("");
+  summaryHTML += `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E2DA;"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>`;
+  if (discount > 0) summaryHTML += `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E2DA;color:#2a7a2a;"><span>${payment === "venmo" ? "Venmo Discount (10%)" : "Promo Discount (10%)"}</span><span>-$${discountAmt.toFixed(2)}</span></div>`;
+  summaryHTML += `<div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #E8E2DA;"><span>Shipping (${shipping === "twoday" ? "2-Day" : "Standard"})</span><span>${shippingCost === 0 ? "<span style=\'color:#2a7a2a;font-weight:700;\'>FREE</span>" : "$" + shippingCost.toFixed(2)}</span></div>`;
+  summaryHTML += `<div style="display:flex;justify-content:space-between;padding:8px 0;font-size:17px;font-weight:700;"><span>Total</span><span style="color:#9B1B1B;">$${total.toFixed(2)}</span></div>`;
+
+  document.getElementById("orderSummaryBox").innerHTML = summaryHTML;
+
+  // Set hidden fields
+  document.getElementById("hiddenOrderItems").value = cart.map(i => `${i.group} ${i.variant} x${i.qty} ($${(i.price*i.qty).toFixed(2)})`).join(" | ");
+  document.getElementById("hiddenOrderTotal").value = `Subtotal: $${subtotal.toFixed(2)} | Discount: -$${discountAmt.toFixed(2)} | Shipping: $${shippingCost.toFixed(2)} | Total: $${total.toFixed(2)}`;
+  document.getElementById("hiddenPromo").value = appliedPromo || "none";
+  document.getElementById("hiddenShipping").value = shipping === "twoday" ? "2-Day $30" : "Standard $10";
+}
+
+// Formspree submit
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("orderForm");
+  if (form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const payment = document.getElementById("paymentSelect").value;
+      const shipping = document.getElementById("shippingSelect").value;
+      const subtotal = getSubtotal();
+      const discount = getDiscount(payment, appliedPromo);
+      const shippingCost = getShipping(shipping, subtotal, discount);
+      const total = (subtotal - subtotal * discount + shippingCost).toFixed(2);
+
+      fetch("https://formspree.io/f/mgoryakp", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(r => {
+        if (r.ok) {
+          const payMsg = payment === "venmo"
+            ? `Please send <strong>$${total}</strong> to <strong>@EllesWorldResearch</strong> on Venmo to complete your purchase.`
+            : `Please send <strong>$${total}</strong> via Zelle to <strong>(707) 291-9669</strong> to complete your purchase.`;
+          document.getElementById("confirmMsg").innerHTML = "Elle\'s World Research has your order and will be in touch shortly.<br><br>" + payMsg;
+          document.getElementById("step2").style.display = "none";
+          document.getElementById("step3").style.display = "block";
+        } else {
+          alert("Something went wrong. Please email orders@ellesworldresearch.net directly.");
+        }
+      }).catch(() => {
+        alert("Something went wrong. Please email orders@ellesworldresearch.net directly.");
+      });
+    });
+  }
+});
 
 function goToStep2() {
   if (!cart.length) return;
