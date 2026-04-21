@@ -318,7 +318,7 @@
 
     <div class="cart-total"><span>Total Due</span><span id="cartTotal">$0.00</span></div>
     <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
-    <p class="venmo-note">💙 Venmo = automatic 10% off at checkout</p>
+    <p class="venmo-note">💙 Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) = 10% off &nbsp;&middot;&nbsp; Zelle (<a href="tel:7072919669">(707) 291-9669</a>) = standard pricing</p>
   </div>
 </div>
 
@@ -366,7 +366,7 @@
 
     <div class="cart-total"><span>Total Due</span><span id="cartTotal">$0.00</span></div>
     <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
-    <p class="venmo-note">💙 Venmo = automatic 10% off at checkout</p>
+    <p class="venmo-note">💙 Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) = 10% off &nbsp;&middot;&nbsp; Zelle (<a href="tel:7072919669">(707) 291-9669</a>) = standard pricing</p>
   </div>
 </div>
 
@@ -389,13 +389,13 @@
             <div style="font-size:16px;margin-bottom:2px;">💙</div>
             <div style="font-weight:700;font-size:13px;">Venmo</div>
             <div style="font-size:11px;color:#9B1B1B;font-weight:600;">10% off automatically</div>
-            <div style="font-size:10px;color:#888;">@EllesWorldResearch</div>
+            <div style="font-size:10px;color:#888;"><a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a></div>
           </div>
           <div id="zelleBtn" onclick="selectModalPayment('zelle')" style="border:2px solid #E8E2DA;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
             <div style="font-size:16px;margin-bottom:2px;">💜</div>
             <div style="font-weight:700;font-size:13px;">Zelle</div>
             <div style="font-size:11px;color:#888;">Standard pricing</div>
-            <div style="font-size:10px;color:#888;">(707) 291-9669</div>
+            <div style="font-size:10px;color:#888;"><a href="tel:7072919669">(707) 291-9669</a></div>
           </div>
         </div>
       </div>
@@ -480,7 +480,16 @@
           <textarea name="notes" placeholder="Any special instructions?" rows="2" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;resize:vertical;"></textarea>
         </div>
 
-        <button type="submit" class="checkout-btn" style="margin-bottom:10px;">Submit Order →</button>
+        <div style="margin-bottom:14px;">
+          <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#1A1A1A;cursor:pointer;line-height:1.5;">
+            <input type="checkbox" id="researchAgreementCheck" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;" />
+            I confirm that I am 21 or older and that all products are being purchased strictly for research purposes only. I understand these products are not intended for human or veterinary use.
+          </label>
+          <div id="researchAgreementError" style="display:none;color:#C0392B;font-size:12px;margin-top:6px;font-weight:600;">
+            You must agree to the research use terms before placing an order.
+          </div>
+        </div>
+        <button type="submit" class="checkout-btn" style="margin-bottom:10px;">Submit Order 📦</button>
         <button type="button" class="modal-close-btn" onclick="goToStep1()">← Back</button>
       </form>
     </div>
@@ -880,7 +889,7 @@ function goToStep2() {
     <div style="border-top:1px solid #E8E2DA;margin-top:6px;padding-top:6px;display:flex;justify-content:space-between;font-weight:700;color:#9B1B1B;">
       <span>Total Due</span><span>$${total.toFixed(2)}</span>
     </div>
-    <div style="font-size:11px;color:#888;margin-top:4px;">Payment: ${modalPayment === "venmo" ? "Venmo @EllesWorldResearch" : "Zelle (707) 291-9669"}</div>`;
+    <div style="font-size:11px;color:#888;margin-top:4px;">Payment: ${modalPayment === "venmo" ? `Venmo <a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>` : `Zelle <a href="tel:7072919669">(707) 291-9669</a>`}</div>`;
 
   document.getElementById("step1").style.display = "none";
   document.getElementById("step2").style.display = "block";
@@ -904,6 +913,14 @@ document.addEventListener("DOMContentLoaded", function() {
   if (form) {
     form.addEventListener("submit", function(e) {
       e.preventDefault();
+      const agreeBox = document.getElementById('researchAgreementCheck');
+      const agreeErr = document.getElementById('researchAgreementError');
+      if (agreeBox && !agreeBox.checked) {
+        agreeErr.style.display = 'block';
+        agreeBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (agreeErr) agreeErr.style.display = 'none';
       const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
       const discount = getModalDiscount();
       const discountAmt = subtotal * discount;
@@ -933,8 +950,8 @@ document.addEventListener("DOMContentLoaded", function() {
       }).then(r => {
         if (r.ok) {
           const payMsg = modalPayment === "venmo"
-            ? `Please send <strong>$${total}</strong> to <strong>@EllesWorldResearch</strong> on Venmo to complete your purchase.`
-            : `Please send <strong>$${total}</strong> via Zelle to <strong>(707) 291-9669</strong> to complete your purchase.`;
+            ? `Please send <strong>$${total}</strong> to <a href="https://venmo.com/EllesWorldResearch" target="_blank"><strong>@EllesWorldResearch</strong></a> on Venmo to complete your purchase.`
+            : `Please send <strong>$${total}</strong> via Zelle to <a href="tel:7072919669"><strong>(707) 291-9669</strong></a> to complete your purchase.`;
           document.getElementById("confirmMsg").innerHTML = "Elle\'s World Research has your order and will be in touch shortly.<br><br>" + payMsg;
           document.getElementById("step2").style.display = "none";
           document.getElementById("step3").style.display = "block";
@@ -1018,7 +1035,7 @@ fetch("../products.json")
         </ul>
       </div>
     </div>
-    <div class="footer-disclaimer">All products available on this site are strictly designated for research use only. They are not intended for human or veterinary administration, and no diagnostic, therapeutic, or clinical application is implied, warranted, or permitted.</div>
+    <div class="footer-disclaimer">All products sold by Elle's World Research are strictly for in-vitro research and laboratory use only. These compounds are not intended for human or animal consumption, and no therapeutic, diagnostic, or clinical use is implied or permitted. You must be 21 or older to purchase. By placing an order you confirm you are a qualified researcher and agree to our Research Use Only Agreement.</div>
     <div class="footer-bottom">&copy; 2026 Elle's World Research. All Rights Reserved.</div>
   </footer>
 

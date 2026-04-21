@@ -466,7 +466,7 @@
   <p>All products are third-party tested · Research use only · Not for human consumption</p>
 </div>
 <div class="disclaimer-bar">
-  Must be 18+ · Complete the <a href="agreement.html" style="color:#fff;text-decoration:underline;">Research Use Only Agreement</a> before ordering
+  Must be 21+ · Complete the <a href="agreement.html" style="color:#fff;text-decoration:underline;">Research Use Only Agreement</a> before ordering
 </div>
 
 <!-- FILTER BAR -->
@@ -502,7 +502,7 @@
       <span id="cartTotal">$0.00</span>
     </div>
     <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
-    <p class="venmo-note">Payment via Venmo or Zelle after order placement</p>
+    <p class="venmo-note">Payment via Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) or Zelle (<a href="tel:7072919669">(707) 291-9669</a>) after order placement</p>
   </div>
 </div>
 
@@ -517,7 +517,7 @@
       <div class="payment-card selected" id="venmoCard" onclick="selectPayment('venmo')">
         <h4>💙 Venmo</h4>
         <p class="discount">10% OFF with VENMO10</p>
-        <p>@EllesWorldResearch</p>
+        <p><a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a></p>
       </div>
       <div class="payment-card" id="zelleCard" onclick="selectPayment('zelle')">
         <h4>💜 Zelle</h4>
@@ -754,7 +754,7 @@ function updateOrderInstructions(subtotal, venmoTotal) {
   document.getElementById("orderInstructions").innerHTML = `
     <strong>How to complete your order:</strong><br><br>
     ${isVenmo
-      ? `1. Send <strong>$${amount}</strong> to <strong>@EllesWorldResearch</strong> on Venmo<br>
+      ? `1. Send <strong>$${amount}</strong> to <a href="https://venmo.com/EllesWorldResearch" target="_blank"><strong>@EllesWorldResearch</strong></a> on Venmo<br>
          &nbsp;&nbsp;&nbsp;(Use code <strong>VENMO10</strong> — 10% discount applied)<br>`
       : `1. Send <strong>$${amount}</strong> via Zelle to <strong>orders@ellesworldresearch.net</strong><br>`
     }

@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python fix_age.py)",
+      "Bash(python audit_checkout.py)",
+      "Bash(python fix_checkout_checkbox.py)",
+      "Bash(python fix_disclaimer_text.py)",
+      "Bash(python audit_venmo.py)",
+      "Bash(python fix_venmo_zelle.py)"
+    ]
+  }
+}
