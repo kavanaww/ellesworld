@@ -1,0 +1,407 @@
+[
+  {
+    "id": 1,
+    "group": "Selank",
+    "variant": "10mg",
+    "category": "cognitive",
+    "class": "Cognitive",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 2,
+    "group": "Semax",
+    "variant": "10mg",
+    "category": "cognitive",
+    "class": "Cognitive",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 3,
+    "group": "Melatonan I",
+    "variant": "10mg",
+    "category": "cosmetic",
+    "class": "Cosmetic/Tanning",
+    "price": 35,
+    "researchLinks": []
+  },
+  {
+    "id": 4,
+    "group": "Melatonan II",
+    "variant": "10mg",
+    "category": "cosmetic",
+    "class": "Cosmetic/Tanning",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 5,
+    "group": "MT-1",
+    "variant": "10mg",
+    "category": "cosmetic",
+    "class": "Cosmetic/Tanning",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 6,
+    "group": "MT-2",
+    "variant": "10mg",
+    "category": "cosmetic",
+    "class": "Cosmetic/Tanning",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 7,
+    "group": "IGF-1 LR3",
+    "variant": "1.5mg",
+    "category": "ghrp",
+    "class": "GH",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 8,
+    "group": "CJC w/Ipamorelin No Dac",
+    "variant": "Standard",
+    "category": "ghrp",
+    "class": "GHRP",
+    "price": 40,
+    "researchLinks": []
+  },
+  {
+    "id": 9,
+    "group": "Ipamorelin",
+    "variant": "10mg",
+    "category": "ghrp",
+    "class": "GHRP",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 10,
+    "group": "Seramorelin",
+    "variant": "10mg",
+    "category": "ghrp",
+    "class": "GHRP",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 11,
+    "group": "Tesamorelin",
+    "variant": "10mg",
+    "category": "ghrp",
+    "class": "GHRP",
+    "price": 50,
+    "researchLinks": []
+  },
+  {
+    "id": 12,
+    "group": "BPC-157",
+    "variant": "10mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 40,
+    "researchLinks": []
+  },
+  {
+    "id": 13,
+    "group": "GHK-Cu",
+    "variant": "100mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 75,
+    "researchLinks": []
+  },
+  {
+    "id": 14,
+    "group": "GHK-Cu",
+    "variant": "50mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 50,
+    "researchLinks": []
+  },
+  {
+    "id": 15,
+    "group": "Glow",
+    "variant": "70mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 75,
+    "researchLinks": []
+  },
+  {
+    "id": 16,
+    "group": "Glutathione",
+    "variant": "1640mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 60,
+    "researchLinks": []
+  },
+  {
+    "id": 17,
+    "group": "Klow",
+    "variant": "80mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 85,
+    "researchLinks": []
+  },
+  {
+    "id": 18,
+    "group": "Kpv",
+    "variant": "10mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 20,
+    "researchLinks": []
+  },
+  {
+    "id": 19,
+    "group": "TB-4",
+    "variant": "10mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 20,
+    "group": "Wolverine",
+    "variant": "10/10mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 75,
+    "researchLinks": []
+  },
+  {
+    "id": 21,
+    "group": "Wolverine",
+    "variant": "5/5mg",
+    "category": "healing",
+    "class": "Healing",
+    "price": 50,
+    "researchLinks": []
+  },
+  {
+    "id": 22,
+    "group": "VIP",
+    "variant": "10mg",
+    "category": "immune",
+    "class": "Immune Health",
+    "price": 20,
+    "researchLinks": []
+  },
+  {
+    "id": 23,
+    "group": "Dihexa",
+    "variant": "10mg",
+    "category": "longevity",
+    "class": "Longevity",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 24,
+    "group": "Epithalon",
+    "variant": "10mg",
+    "category": "longevity",
+    "class": "Longevity",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 25,
+    "group": "NAD+",
+    "variant": "500mg",
+    "category": "longevity",
+    "class": "Longevity/Energy",
+    "price": 50,
+    "researchLinks": []
+  },
+  {
+    "id": 26,
+    "group": "NAD+",
+    "variant": "1000mg",
+    "category": "longevity",
+    "class": "Longevity/Energy",
+    "price": 85,
+    "researchLinks": []
+  },
+  {
+    "id": 27,
+    "group": "5 Amino 1MQ",
+    "variant": "5mg",
+    "category": "mitochondrial",
+    "class": "Mitochondrial",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 28,
+    "group": "Mots C",
+    "variant": "30mg",
+    "category": "mitochondrial",
+    "class": "Mitochondrial",
+    "price": 45,
+    "researchLinks": []
+  },
+  {
+    "id": 29,
+    "group": "SS31",
+    "variant": "10mg",
+    "category": "mitochondrial",
+    "class": "Mitochondrial",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 30,
+    "group": "SS31",
+    "variant": "50mg",
+    "category": "mitochondrial",
+    "class": "Mitochondrial",
+    "price": 60,
+    "researchLinks": []
+  },
+  {
+    "id": 31,
+    "group": "Oxytocin",
+    "variant": "5mg",
+    "category": "mood",
+    "class": "Mood",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 33,
+    "group": "DSIP",
+    "variant": "10mg",
+    "category": "mood",
+    "class": "Sleep",
+    "price": 25,
+    "researchLinks": []
+  },
+  {
+    "id": 32,
+    "group": "PT-141",
+    "variant": "10mg",
+    "category": "sexual",
+    "class": "Sexual Health",
+    "price": 30,
+    "researchLinks": []
+  },
+  {
+    "id": 34,
+    "group": "Cargrilintide",
+    "variant": "5mg",
+    "category": "glp",
+    "class": "GLP1",
+    "price": 50,
+    "researchLinks": []
+  },
+  {
+    "id": 35,
+    "group": "Semaglutide",
+    "variant": "10mg",
+    "category": "glp",
+    "class": "GLP1",
+    "price": 75,
+    "researchLinks": []
+  },
+  {
+    "id": 36,
+    "group": "Semaglutide",
+    "variant": "20mg",
+    "category": "glp",
+    "class": "GLP1",
+    "price": 125,
+    "researchLinks": []
+  },
+  {
+    "id": 37,
+    "group": "Tirzepatide",
+    "variant": "30mg",
+    "category": "glp",
+    "class": "GLP2",
+    "price": 100,
+    "researchLinks": []
+  },
+  {
+    "id": 38,
+    "group": "Tirzepatide",
+    "variant": "60mg",
+    "category": "glp",
+    "class": "GLP2",
+    "price": 150,
+    "researchLinks": []
+  },
+  {
+    "id": 39,
+    "group": "Tirzepatide",
+    "variant": "115mg",
+    "category": "glp",
+    "class": "GLP2",
+    "price": 200,
+    "researchLinks": []
+  },
+  {
+    "id": 40,
+    "group": "Retatrutide",
+    "variant": "12mg",
+    "category": "glp",
+    "class": "GLP3",
+    "price": 75,
+    "researchLinks": []
+  },
+  {
+    "id": 41,
+    "group": "Retatrutide",
+    "variant": "24mg",
+    "category": "glp",
+    "class": "GLP3",
+    "price": 125,
+    "researchLinks": []
+  },
+  {
+    "id": 42,
+    "group": "Retatrutide",
+    "variant": "50mg",
+    "category": "glp",
+    "class": "GLP3",
+    "price": 200,
+    "researchLinks": []
+  },
+  {
+    "id": 43,
+    "group": "Retatrutide",
+    "variant": "75mg",
+    "category": "glp",
+    "class": "GLP3",
+    "price": 275,
+    "researchLinks": []
+  },
+  {
+    "id": 44,
+    "group": "BAC Water",
+    "variant": "3mL",
+    "category": "recon",
+    "class": "Reconstitution",
+    "price": 5,
+    "researchLinks": []
+  },
+  {
+    "id": 45,
+    "group": "BAC Water",
+    "variant": "10mL",
+    "category": "recon",
+    "class": "Reconstitution",
+    "price": 8,
+    "researchLinks": []
+  }
+]
