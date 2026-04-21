@@ -470,7 +470,16 @@ function ewEnterSite(){
           <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Notes (optional)</label>
           <textarea name="notes" placeholder="Any special instructions?" rows="2" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;resize:vertical;"></textarea>
         </div>
-        <button type="submit" class="checkout-btn" style="margin-bottom:10px;">Submit Order &#8594;</button>
+        <div style="margin-bottom:14px;">
+      <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#1A1A1A;cursor:pointer;line-height:1.5;">
+        <input type="checkbox" id="researchAgreementCheck" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;" />
+        I confirm that I am 21 or older and that all products are being purchased strictly for research purposes only. I understand these products are not intended for human or veterinary use.
+      </label>
+      <div id="researchAgreementError" style="display:none;color:#C0392B;font-size:12px;margin-top:6px;font-weight:600;">
+        You must agree to the research use terms before placing an order.
+      </div>
+    </div>
+    <button type="submit" class="checkout-btn" style="margin-bottom:10px;">Submit Order &#8594;</button>
         <button type="button" class="modal-close-btn" onclick="goToStep1()">&#8592; Back</button>
       </form>
     </div>
@@ -797,6 +806,15 @@ document.addEventListener("DOMContentLoaded", function() {
   const form = document.getElementById("orderForm");
   if (form) {
     form.addEventListener("submit", function(e) {
+    const agreeBox = document.getElementById('researchAgreementCheck');
+    const agreeErr = document.getElementById('researchAgreementError');
+    if (agreeBox && !agreeBox.checked) {
+      agreeErr.style.display = 'block';
+      agreeBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      return;
+    }
+    if (agreeErr) agreeErr.style.display = 'none';
+
       e.preventDefault();
       const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
       const discount = getModalDiscount();
@@ -914,7 +932,7 @@ function renderProduct(allProducts) {
 loadCart();
 updateCartUI();
 
-fetch("../products.json")
+fetch("/products.json")
   .then(r => r.json())
   .then(data => {
     PRODUCTS = data;

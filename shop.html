@@ -476,14 +476,14 @@ function ewEnterSite(){
 
 <!-- NAV -->
 <nav class="nav">
-  <a href="../index.html" class="nav-logo">
+  <a href="/index.html" class="nav-logo">
     <img src="/assets/logo.png" alt="Elle's World Research" />
   </a>
   <ul class="nav-links">
-    <li><a href="shop.html" class="active">Shop</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="agreement.html">Research Agreement</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="/pages/shop.html" class="active">Shop</a></li>
+    <li><a href="/pages/about.html">About</a></li>
+    <li><a href="/pages/research-agreement.html">Research Agreement</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
   </ul>
   <div style="display:flex;align-items:center;gap:12px;">
     <button class="cart-btn" onclick="openCart()">
@@ -494,10 +494,10 @@ function ewEnterSite(){
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
-    <li><a href="shop.html">Shop</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="agreement.html">Research Agreement</a></li>
-    <li><a href="contact.html">Contact</a></li>
+    <li><a href="/pages/shop.html">Shop</a></li>
+    <li><a href="/pages/about.html">About</a></li>
+    <li><a href="/pages/research-agreement.html">Research Agreement</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
   </ul>
 </div>
 
@@ -507,7 +507,7 @@ function ewEnterSite(){
   <p>All products are third-party tested · Research use only · Not for human consumption</p>
 </div>
 <div class="disclaimer-bar">
-  Must be 21+ · Complete the <a href="agreement.html" style="color:#fff;text-decoration:underline;">Research Use Only Agreement</a> before ordering
+  Must be 21+ · Complete the <a href="/pages/research-agreement.html" style="color:#fff;text-decoration:underline;">Research Use Only Agreement</a> before ordering
 </div>
 
 <!-- FILTER BAR -->
@@ -553,6 +553,15 @@ function ewEnterSite(){
     <h2>Complete Your Order</h2>
     <p>Review your items, choose a payment method, then send payment and email your order confirmation.</p>
     <div class="modal-items" id="modalItems"></div>
+    <div style="margin:14px 0;">
+      <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#1A1A1A;cursor:pointer;line-height:1.5;">
+        <input type="checkbox" id="researchAgreementCheck" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;" />
+        I confirm that I am 21 or older and that all products are being purchased strictly for research purposes only. I understand these products are not intended for human or veterinary use.
+      </label>
+      <div id="researchAgreementError" style="display:none;color:#C0392B;font-size:12px;margin-top:6px;font-weight:600;">
+        You must agree to the research use terms before placing an order.
+      </div>
+    </div>
     <h3 style="font-family:'Playfair Display',serif;font-size:18px;margin-bottom:12px;">Choose Payment Method</h3>
     <div class="payment-options">
       <div class="payment-card selected" id="venmoCard" onclick="selectPayment('venmo')">
@@ -650,7 +659,7 @@ const CATEGORIES = [
   { id: "recon",        label: "Reconstitution",     icon: "💧" },
 ];
 
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('ew_cart') || '[]');
 let activeCategory = "all";
 let activePayment = "venmo";
 
@@ -695,6 +704,7 @@ function addToCart(id) {
   } else {
     cart.push({ ...product, qty: 1 });
   }
+  localStorage.setItem('ew_cart', JSON.stringify(cart));
   updateCartUI();
 
   // Flash button
@@ -708,6 +718,7 @@ function addToCart(id) {
 
 function removeFromCart(id) {
   cart = cart.filter(i => i.id !== id);
+  localStorage.setItem('ew_cart', JSON.stringify(cart));
   updateCartUI();
 }
 
@@ -836,28 +847,28 @@ renderShop("all");
     <div class="footer-col">
       <h4>Quick Menu</h4>
       <ul>
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="/index.html">Home</a></li>
+        <li><a href="/pages/shop.html">Shop</a></li>
+        <li><a href="/pages/about.html">About</a></li>
+        <li><a href="/pages/contact.html">Contact</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Information</h4>
       <ul>
-        <li><a href="shipping-info.html">Shipping Info</a></li>
-        <li><a href="about.html">Our Story</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="contact.html">Track Order</a></li>
+        <li><a href="/pages/shipping-info.html">Shipping Info</a></li>
+        <li><a href="/pages/about.html">Our Story</a></li>
+        <li><a href="/pages/faq.html">FAQ</a></li>
+        <li><a href="/pages/contact.html">Track Order</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Legal</h4>
       <ul>
-        <li><a href="privacy-policy.html">Privacy Policy</a></li>
-        <li><a href="shipping-policy.html">Shipping Policy</a></li>
-        <li><a href="terms-of-service.html">Terms of Service</a></li>
-        <li><a href="return-policy.html">Return Policy</a></li>
+        <li><a href="/pages/privacy-policy.html">Privacy Policy</a></li>
+        <li><a href="/pages/shipping-policy.html">Shipping Policy</a></li>
+        <li><a href="/pages/terms-of-service.html">Terms of Service</a></li>
+        <li><a href="/pages/return-policy.html">Return Policy</a></li>
       </ul>
     </div>
   </div>

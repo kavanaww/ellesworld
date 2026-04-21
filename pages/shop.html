@@ -363,54 +363,6 @@ function ewEnterSite(){
   </div>
 </div>
 
-<div class="page-header">
-  <h1>Product Catalog</h1>
-  <p>All products are third-party tested · Research use only · Not for human consumption</p>
-</div>
-
-<div class="shop-main" id="shopMain"></div>
-
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-<div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header">
-    <h2>Your Cart</h2>
-    <button class="cart-close" onclick="closeCart()">✕</button>
-  </div>
-  <div class="cart-items" id="cartItems"></div>
-  <div class="cart-footer">
-    <div id="shippingProgress" style="margin-bottom:14px;"></div>
-    <div id="bacWaterUpsell" style="display:none;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;"></div>
-
-    <!-- PROMO CODE IN CART -->
-    <div style="margin-bottom:14px;">
-      <div style="display:flex;gap:8px;margin-bottom:6px;">
-        <input type="text" id="cartPromoInput" placeholder="Promo code" style="flex:1;padding:9px 12px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:13px;font-family:DM Sans,sans-serif;" />
-        <button onclick="applyCartPromo()" style="background:var(--teal);color:#fff;border:none;border-radius:4px;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:DM Sans,sans-serif;white-space:nowrap;">Apply</button>
-      </div>
-      <div id="cartPromoMsg" style="font-size:12px;min-height:16px;"></div>
-    </div>
-
-    <!-- APPLIED DISCOUNTS -->
-    <div id="cartDiscountList" style="margin-bottom:10px;"></div>
-
-    <!-- SHIPPING SELECTOR IN CART -->
-    <div style="margin-bottom:14px;">
-      <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Shipping Method</label>
-      <select id="cartShippingSelect" onchange="updateCartUI()" style="width:100%;padding:10px 12px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:13px;font-family:DM Sans,sans-serif;color:#1A1A1A;">
-        <option value="standard">Standard Shipping — $10 (Free over $250)</option>
-        <option value="twoday">2-Day Shipping — $30</option>
-      </select>
-    </div>
-
-    <!-- ORDER SUMMARY IN CART -->
-    <div id="cartSummaryBox" style="background:#F5F0EB;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;"></div>
-
-    <div class="cart-total"><span>Total Due</span><span id="cartTotal">$0.00</span></div>
-    <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
-    <p class="venmo-note">💙 Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) = 10% off &nbsp;&middot;&nbsp; Zelle (<a href="tel:7072919669">(707) 291-9669</a>) = standard pricing</p>
-  </div>
-</div>
-
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
 
@@ -1024,7 +976,7 @@ function filterCat(cat, btn) {
   renderShop(cat);
 }
 
-fetch("../products.json")
+fetch("/products.json")
   .then(r => r.json())
   .then(data => {
     PRODUCTS = data;

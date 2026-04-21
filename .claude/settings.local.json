@@ -10,7 +10,10 @@
       "Bash(python fix_about_emojis.py)",
       "Bash(python fix_logo2.py)",
       "Bash(python add_age_gate.py)",
-      "Bash(python audit_cart.py)"
+      "Bash(python audit_cart.py)",
+      "Bash(python full_audit.py)",
+      "Bash(python -c ' *)",
+      "Bash(python c:/Users/timot/ellesworld/fix_audit_issues.py)"
     ]
   }
 }
