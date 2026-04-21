@@ -118,9 +118,191 @@
       .page-header h1 { font-size: 26px; }
       .content { padding: 32px 16px; }
     }
+  
+    /* ── Cart & Checkout CSS ── */
+    .cart-btn {
+          position: relative; background: var(--red); color: #fff; border: none;
+          border-radius: 50px; padding: 8px 18px; font-size: 13px; font-weight: 600;
+          cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background 0.2s;
+          font-family: "DM Sans", sans-serif;
+        }
+        .cart-btn:hover { background: var(--red-dark); }
+        .cart-count { background: #fff; color: var(--red); border-radius: 50%; width: 20px; height: 20px; font-size: 11px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+    
+        .page-header { background: linear-gradient(135deg, var(--red-dark), var(--red)); color: #fff; padding: 48px 80px; text-align: center; }
+        .page-header h1 { font-family: "Playfair Display", serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; margin-bottom: 10px; }
+        .page-header p { font-size: 15px; color: rgba(255,255,255,0.75); }
+    
+        .disclaimer-bar { background: var(--red-dark); color: rgba(255,255,255,0.85); text-align: center; padding: 10px 24px; font-size: 12px; letter-spacing: 0.04em; }
+    
+        .filter-bar {
+          background: #fff; border-bottom: 1px solid var(--warm-gray);
+          padding: 14px 80px; display: flex; gap: 8px; flex-wrap: wrap;
+          align-items: center; position: sticky; top: 72px; z-index: 90;
+        }
+        .filter-btn {
+          background: none; border: 1.5px solid var(--warm-gray); border-radius: 50px;
+          padding: 7px 16px; font-size: 13px; font-weight: 500; cursor: pointer;
+          transition: all 0.2s; color: var(--text-mid); font-family: "DM Sans", sans-serif;
+        }
+        .filter-btn:hover { border-color: var(--red); color: var(--red); }
+        .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+    
+        .shop-main { padding: 40px 80px 80px; }
+        .category-section { margin-bottom: 60px; }
+        .category-title {
+          font-family: "Playfair Display", serif; font-size: 26px; font-weight: 700;
+          margin-bottom: 20px; padding-bottom: 12px; border-bottom: 2px solid var(--warm-gray);
+          display: flex; align-items: center; gap: 10px;
+        }
+    
+        .product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+    
+        .product-card {
+          background: #fff; border: 1px solid var(--warm-gray); border-radius: 8px;
+          padding: 20px; transition: all 0.2s; display: flex; flex-direction: column; gap: 10px;
+          position: relative;
+        }
+        .product-card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.1); border-color: var(--red); transform: translateY(-2px); }
+        .product-class { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); }
+        .product-name { font-family: "Playfair Display", serif; font-size: 18px; font-weight: 700; color: var(--text-dark); line-height: 1.3; text-decoration: none; display: block; }
+        .product-name::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+        .product-card:hover .product-name { color: var(--red); }
+        .product-price { font-size: 22px; font-weight: 700; color: var(--red); }
+    
+        /* VARIANT SELECT */
+        .variant-select {
+          width: 100%;
+          padding: 8px 12px;
+          border: 1.5px solid var(--warm-gray);
+          border-radius: 4px;
+          font-size: 14px;
+          font-family: "DM Sans", sans-serif;
+          color: var(--text-dark);
+          background: var(--off-white);
+          cursor: pointer;
+          transition: border-color 0.2s;
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+          background-repeat: no-repeat;
+          background-position: right 12px center;
+          padding-right: 32px;
+          position: relative; z-index: 2;
+        }
+        .variant-select:focus { outline: none; border-color: var(--red); }
+    
+        .add-btn {
+          background: var(--red); color: #fff; border: none; border-radius: 4px;
+          padding: 11px; font-size: 13px; font-weight: 600; cursor: pointer;
+          width: 100%; transition: background 0.2s; font-family: "DM Sans", sans-serif;
+          letter-spacing: 0.04em; margin-top: auto;
+          position: relative; z-index: 2;
+        }
+        .add-btn:hover { background: var(--red-dark); }
+        .add-btn.added { background: #2a7a2a; }
+    
+        /* CART */
+        .cart-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 200; }
+        .cart-overlay.open { display: block; }
+        .cart-drawer { position: fixed; right: -420px; top: 0; bottom: 0; width: 420px; max-width: 100vw; background: #fff; z-index: 201; display: flex; flex-direction: column; transition: right 0.3s ease; box-shadow: -4px 0 32px rgba(0,0,0,0.15); }
+        .cart-drawer.open { right: 0; }
+        .cart-header { padding: 24px; border-bottom: 1px solid var(--warm-gray); display: flex; justify-content: space-between; align-items: center; }
+        .cart-header h2 { font-family: "Playfair Display", serif; font-size: 22px; font-weight: 700; }
+        .cart-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-mid); }
+        .cart-items { flex: 1; overflow-y: auto; padding: 16px 24px; }
+        .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--warm-gray); gap: 12px; }
+        .cart-item-info { flex: 1; }
+        .cart-item-name { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .cart-item-price { font-size: 13px; color: var(--red); font-weight: 600; }
+        .cart-item-qty { display: flex; align-items: center; gap: 8px; }
+        .qty-btn { background: var(--warm-gray); border: none; width: 26px; height: 26px; border-radius: 50%; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-weight: 700; transition: background 0.15s; }
+        .qty-btn:hover { background: var(--red); color: #fff; }
+        .qty-num { font-size: 14px; font-weight: 600; min-width: 20px; text-align: center; }
+        .cart-footer { padding: 20px 24px; border-top: 1px solid var(--warm-gray); }
+        .cart-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+        .checkout-btn { background: var(--red); color: #fff; border: none; border-radius: 4px; padding: 14px; font-size: 14px; font-weight: 700; cursor: pointer; width: 100%; font-family: "DM Sans", sans-serif; letter-spacing: 0.06em; text-transform: uppercase; transition: background 0.2s; }
+        .checkout-btn:hover { background: var(--red-dark); }
+        .cart-empty { text-align: center; padding: 60px 24px; color: var(--text-light); font-size: 15px; }
+        .venmo-note { font-size: 12px; color: var(--text-light); text-align: center; margin-top: 10px; line-height: 1.5; }
+    
+        /* ORDER MODAL */
+        .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 300; align-items: center; justify-content: center; }
+        .modal-overlay.open { display: flex; }
+        .modal { background: #fff; border-radius: 12px; padding: 28px; max-width: 520px; width: 94%; max-height: 94vh; overflow-y: auto; }
+        .modal h2 { font-family: "Playfair Display", serif; font-size: 26px; font-weight: 700; margin-bottom: 8px; }
+        .modal p { font-size: 14px; color: var(--text-mid); margin-bottom: 20px; line-height: 1.6; }
+        .modal-items { background: var(--off-white); border-radius: 8px; padding: 16px; margin-bottom: 20px; }
+        .modal-item { display: flex; justify-content: space-between; padding: 6px 0; font-size: 14px; border-bottom: 1px solid var(--warm-gray); }
+        .modal-item:last-child { border-bottom: none; }
+        .modal-total { display: flex; justify-content: space-between; font-size: 18px; font-weight: 700; margin-top: 12px; padding-top: 12px; border-top: 2px solid var(--warm-gray); }
+        .payment-options { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+        .payment-card { border: 2px solid var(--warm-gray); border-radius: 8px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s; }
+        .payment-card:hover, .payment-card.selected { border-color: var(--red); background: #fdf5f5; }
+        .payment-card h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .payment-card p { font-size: 12px; color: var(--text-light); margin: 0; }
+        .payment-card .discount { color: var(--red); font-weight: 700; font-size: 13px; }
+        .order-instructions { background: #f0f8f0; border: 1px solid #c3e6c3; border-radius: 8px; padding: 16px; font-size: 13px; line-height: 1.7; color: var(--text-mid); margin-bottom: 16px; }
+        .modal-close-btn { background: none; border: 1.5px solid var(--warm-gray); border-radius: 4px; padding: 10px 20px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: "DM Sans", sans-serif; width: 100%; transition: all 0.2s; }
+        .modal-close-btn:hover { border-color: var(--red); color: var(--red); }
+    
+        @media (max-width: 1024px) {
+          .page-header, .filter-bar, .shop-main { padding-left: 40px; padding-right: 40px; }
+        }
+        @media (max-width: 768px) {
+          .nav { padding: 0 20px; }
+          .nav-links { display: none; }
+          .nav-toggle { display: block; }
+          .page-header { padding: 36px 24px; }
+          .filter-bar { padding: 12px 20px; }
+          .shop-main { padding: 24px 20px 60px; }
+          .cart-drawer { width: 100vw; }
+          .modal { padding: 24px; }
+          .payment-options { grid-template-columns: 1fr; }
+        }
   </style>
 </head>
 <body>
+<!-- EW AGE GATE -->
+<div id="ew-age-gate" style="position:fixed;inset:0;z-index:99999;background:rgba(15,15,15,0.97);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">
+  <div style="background:#fff;border-radius:12px;padding:48px 40px;max-width:500px;width:90%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+    <img src="/assets/logo2.png" alt="Elle's World Research" style="height:90px;width:auto;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#1A1A1A;margin:0 0 8px;">Welcome to Elle's World Research</h2>
+    <p style="font-size:14px;color:#777;margin:0 0 28px;line-height:1.6;">Please confirm the following before entering.</p>
+    <div style="text-align:left;display:flex;flex-direction:column;gap:16px;margin-bottom:28px;">
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;color:#1A1A1A;line-height:1.6;">
+        <input type="checkbox" id="ew-check1" onchange="ewCheckGate()" style="margin-top:3px;width:18px;height:18px;min-width:18px;accent-color:#9B1B1B;cursor:pointer;">
+        I confirm that I am 21 years of age or older
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;color:#1A1A1A;line-height:1.6;">
+        <input type="checkbox" id="ew-check2" onchange="ewCheckGate()" style="margin-top:3px;width:18px;height:18px;min-width:18px;accent-color:#9B1B1B;cursor:pointer;">
+        I confirm that I understand all products are for research purposes only and not for human or veterinary use
+      </label>
+    </div>
+    <button id="ew-enter-btn" onclick="ewEnterSite()" disabled style="width:100%;padding:14px;background:#9B1B1B;color:#fff;border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:not-allowed;opacity:0.4;transition:opacity 0.2s;">Enter Site</button>
+    <p style="margin:16px 0 0;font-size:11px;color:#aaa;line-height:1.6;">By entering you agree to our <a href="/pages/research-agreement.html" style="color:#9B1B1B;text-decoration:underline;">Research Use Only Agreement</a>.</p>
+  </div>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('ew_confirmed')==='1'){
+    var g=document.getElementById('ew-age-gate');
+    if(g) g.style.display='none';
+  }
+})();
+function ewCheckGate(){
+  var ok=document.getElementById('ew-check1').checked&&document.getElementById('ew-check2').checked;
+  var btn=document.getElementById('ew-enter-btn');
+  btn.disabled=!ok;
+  btn.style.opacity=ok?'1':'0.4';
+  btn.style.cursor=ok?'pointer':'not-allowed';
+}
+function ewEnterSite(){
+  localStorage.setItem('ew_confirmed','1');
+  document.getElementById('ew-age-gate').style.display='none';
+}
+</script>
+<!-- END EW AGE GATE -->
+
 
 <nav class="nav">
   <a href="../index.html" class="nav-logo">
@@ -131,7 +313,10 @@
     <li><a href="about.html">About</a></li>
     <li><a href="contact.html">Contact</a></li>
   </ul>
-  <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')">&#9776;</button>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <button class="cart-btn" onclick="openCart()">🛒 Cart <span class="cart-count" id="cartCount">0</span></button>
+    <button class="nav-toggle" onclick="document.getElementById('mobileMenu').classList.toggle('open')">&#9776;</button>
+  </div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
   <ul>
@@ -224,6 +409,676 @@
 
 <script>
   // mobile menu toggle handled inline
+</script>
+
+
+<!-- SITE-WIDE CART -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>Your Cart</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div id="shippingProgress" style="margin-bottom:14px;"></div>
+    <div id="bacWaterUpsell" style="display:none;background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;"></div>
+
+    <!-- PROMO CODE IN CART -->
+    <div style="margin-bottom:14px;">
+      <div style="display:flex;gap:8px;margin-bottom:6px;">
+        <input type="text" id="cartPromoInput" placeholder="Promo code" style="flex:1;padding:9px 12px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:13px;font-family:DM Sans,sans-serif;" />
+        <button onclick="applyCartPromo()" style="background:var(--teal);color:#fff;border:none;border-radius:4px;padding:0 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:DM Sans,sans-serif;white-space:nowrap;">Apply</button>
+      </div>
+      <div id="cartPromoMsg" style="font-size:12px;min-height:16px;"></div>
+    </div>
+
+    <!-- APPLIED DISCOUNTS -->
+    <div id="cartDiscountList" style="margin-bottom:10px;"></div>
+
+    <!-- SHIPPING SELECTOR IN CART -->
+    <div style="margin-bottom:14px;">
+      <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Shipping Method</label>
+      <select id="cartShippingSelect" onchange="updateCartUI()" style="width:100%;padding:10px 12px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:13px;font-family:DM Sans,sans-serif;color:#1A1A1A;">
+        <option value="standard">Standard Shipping — $10 (Free over $250)</option>
+        <option value="twoday">2-Day Shipping — $30</option>
+      </select>
+    </div>
+
+    <!-- ORDER SUMMARY IN CART -->
+    <div id="cartSummaryBox" style="background:#F5F0EB;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;"></div>
+
+    <div class="cart-total"><span>Total Due</span><span id="cartTotal">$0.00</span></div>
+    <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
+    <p class="venmo-note">💙 Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) = 10% off &nbsp;&middot;&nbsp; Zelle (<a href="tel:7072919669">(707) 291-9669</a>) = standard pricing</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+
+    <!-- STEP 1: Review & Pricing -->
+    <div id="step1">
+      <h2>Review Your Order</h2>
+      <p style="font-size:13px;color:#888;margin-bottom:12px;">Select payment method and confirm your total.</p>
+
+      <!-- Items -->
+      <div class="modal-items" id="modalItems"></div>
+
+      <!-- Payment Method -->
+      <div style="margin:12px 0 10px;">
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:8px;">Payment Method</label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div id="venmoBtn" onclick="selectModalPayment('venmo')" style="border:2px solid #9B1B1B;background:#fdf5f5;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
+            <div style="font-size:16px;margin-bottom:2px;">💙</div>
+            <div style="font-weight:700;font-size:13px;">Venmo</div>
+            <div style="font-size:11px;color:#9B1B1B;font-weight:600;">10% off automatically</div>
+            <div style="font-size:10px;color:#888;"><a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a></div>
+          </div>
+          <div id="zelleBtn" onclick="selectModalPayment('zelle')" style="border:2px solid #E8E2DA;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
+            <div style="font-size:16px;margin-bottom:2px;">💜</div>
+            <div style="font-weight:700;font-size:13px;">Zelle</div>
+            <div style="font-size:11px;color:#888;">Standard pricing</div>
+            <div style="font-size:10px;color:#888;"><a href="tel:7072919669">(707) 291-9669</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Promo Code (Zelle only) -->
+      <div id="modalPromoRow" style="display:none;margin-bottom:10px;">
+        <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Promo Code</label>
+        <div style="display:flex;gap:8px;">
+          <input type="text" id="modalPromoInput" placeholder="Enter code" style="flex:1;padding:10px 12px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+          <button type="button" onclick="applyModalPromo()" style="background:#2E7D8C;color:#fff;border:none;border-radius:4px;padding:0 16px;font-size:13px;font-weight:600;cursor:pointer;font-family:DM Sans,sans-serif;">Apply</button>
+        </div>
+        <div id="modalPromoMsg" style="font-size:12px;margin-top:5px;min-height:16px;"></div>
+      </div>
+
+      <!-- Order Summary with all discounts -->
+      <div id="modalSummaryBox" style="background:#F5F0EB;border-radius:8px;padding:12px;margin-bottom:14px;font-size:13px;"></div>
+
+      <button class="checkout-btn" style="margin-bottom:10px;" onclick="goToStep2()">Continue →</button>
+      <button class="modal-close-btn" onclick="backToCart()">← Back to Cart</button>
+    </div>
+
+    <!-- STEP 2: Customer Info ONLY -->
+    <div id="step2" style="display:none;">
+      <h2>Your Details</h2>
+      <p style="font-size:14px;color:#888;margin-bottom:16px;">Fill in your shipping info to place the order.</p>
+
+      <!-- Mini summary -->
+      <div id="step2Summary" style="background:#F5F0EB;border-radius:8px;padding:12px;margin-bottom:20px;font-size:13px;"></div>
+
+      <form id="orderForm">
+        <input type="hidden" name="_subject" value="New Order - Elle's World Research" />
+        <input type="hidden" name="order_items" id="hiddenOrderItems" />
+        <input type="hidden" name="order_total" id="hiddenOrderTotal" />
+        <input type="hidden" name="payment_method" id="hiddenPayment" />
+        <input type="hidden" name="promo_code" id="hiddenPromo" />
+        <input type="hidden" name="shipping_method" id="hiddenShipping" />
+
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Full Name *</label>
+          <input type="text" name="name" placeholder="Your full name" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Email Address *</label>
+          <input type="email" name="email" placeholder="your@email.com" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Street Address *</label>
+          <input type="text" name="street_address" placeholder="123 Main St" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Apt / Suite / Unit (optional)</label>
+          <input type="text" name="address_line2" placeholder="Apt 4B" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 80px;gap:10px;margin-bottom:20px;">
+          <div>
+            <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">City *</label>
+            <input type="text" name="city" placeholder="City" required style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+          </div>
+          <div>
+            <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">State *</label>
+            <select name="state" required style="width:100%;padding:11px 10px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;background:#fff;appearance:none;background-image:url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23888' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E\");background-repeat:no-repeat;background-position:right 8px center;padding-right:24px;">
+              <option value="">--</option>
+              <option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option>
+              <option>CO</option><option>CT</option><option>DE</option><option>FL</option><option>GA</option>
+              <option>HI</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option>
+              <option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option>
+              <option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option>
+              <option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option>
+              <option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option>
+              <option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option>
+              <option>SD</option><option>TN</option><option>TX</option><option>UT</option><option>VT</option>
+              <option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">ZIP Code *</label>
+          <input type="text" name="zip" placeholder="63301" required pattern="\d{5}(-\d{4})?" inputmode="numeric" maxlength="10" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;" />
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Notes (optional)</label>
+          <textarea name="notes" placeholder="Any special instructions?" rows="2" style="width:100%;padding:11px 14px;border:1.5px solid #E8E2DA;border-radius:4px;font-size:14px;font-family:DM Sans,sans-serif;resize:vertical;"></textarea>
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#1A1A1A;cursor:pointer;line-height:1.5;">
+            <input type="checkbox" id="researchAgreementCheck" style="margin-top:3px;flex-shrink:0;width:16px;height:16px;cursor:pointer;" />
+            I confirm that I am 21 or older and that all products are being purchased strictly for research purposes only. I understand these products are not intended for human or veterinary use.
+          </label>
+          <div id="researchAgreementError" style="display:none;color:#C0392B;font-size:12px;margin-top:6px;font-weight:600;">
+            You must agree to the research use terms before placing an order.
+          </div>
+        </div>
+        <button type="submit" class="checkout-btn" style="margin-bottom:10px;">Submit Order 📦</button>
+        <button type="button" class="modal-close-btn" onclick="goToStep1()">← Back</button>
+      </form>
+    </div>
+
+    <!-- STEP 3: Confirmation -->
+    <div id="step3" style="display:none;text-align:center;padding:20px 0;">
+      <div style="font-size:56px;margin-bottom:16px;">✅</div>
+      <h2 style="margin-bottom:12px;">Order Received!</h2>
+      <p style="margin-bottom:20px;" id="confirmMsg"></p>
+      <button onclick="closeCheckout();clearCart();" style="display:inline-block;padding:14px 32px;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:#9B1B1B;color:#fff;border:none;border-radius:3px;cursor:pointer;">Done</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// MASTER PRODUCT LIST
+// Groups = variants shown in dropdown on one card
+// ============================================================
+let PRODUCTS = [];
+
+const CATEGORIES = [
+  { id:"healing",       label:"Tissue Repair Research",      icon:"🩹" },
+  { id:"glp",           label:"Metabolic Research",           icon:"🔥" },
+  { id:"ghrp",          label:"Growth Hormone Research",      icon:"💪" },
+  { id:"cognitive",     label:"Cognitive Research",           icon:"🧠" },
+  { id:"longevity",     label:"Longevity Research",           icon:"🧬" },
+  { id:"cosmetic",      label:"Aesthetic Research",           icon:"💅" },
+  { id:"mitochondrial", label:"Cellular Energy Research",     icon:"⚡" },
+  { id:"mood",          label:"Mood & Sleep Research",        icon:"🌙" },
+  { id:"immune",        label:"Immune Support Research",      icon:"🛡️" },
+  { id:"sexual",        label:"Sexual Wellness Research",     icon:"🍆💦" },
+  { id:"recon",         label:"Reconstitution Solutions",     icon:"💧" },
+];
+
+let cart = [];
+let activePayment = "venmo";
+let appliedPromo = null;
+const PROMO_CODES = { "BECCA": 0.10, "MARRI": 0.10 };
+
+// Group products by category then by group name
+function groupProducts(filter) {
+  const filtered = filter === "all" ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
+  const byCategory = {};
+  CATEGORIES.forEach(c => { byCategory[c.id] = []; });
+  filtered.forEach(p => {
+    if (!byCategory[p.category]) byCategory[p.category] = [];
+    byCategory[p.category].push(p);
+  });
+
+  // Within each category, group by group name
+  const result = {};
+  Object.keys(byCategory).forEach(cat => {
+    const groups = {};
+    byCategory[cat].forEach(p => {
+      if (!groups[p.group]) groups[p.group] = [];
+      groups[p.group].push(p);
+    });
+    result[cat] = groups;
+  });
+  return result;
+}
+
+function renderShop(filter) {
+  const main = document.getElementById("shopMain");
+  main.innerHTML = "";
+  const grouped = groupProducts(filter);
+
+  const cats = filter === "all" ? CATEGORIES : CATEGORIES.filter(c => c.id === filter);
+
+  cats.forEach(cat => {
+    const groups = grouped[cat.id];
+    if (!groups || !Object.keys(groups).length) return;
+
+    const section = document.createElement("div");
+    section.className = "category-section";
+    section.id = cat.id;
+
+    let cardsHTML = Object.entries(groups).map(([groupName, variants]) => {
+      const first = variants[0];
+      const hasVariants = variants.length > 1;
+      const cardId = "card-" + first.id;
+
+      const variantSelect = hasVariants
+        ? `<select class="variant-select" id="sel-${first.id}" onchange="onVariantChange(${first.id}, this)">
+            ${variants.map(v => `<option value="${v.id}" data-price="${v.price}">${v.variant} — $${v.price}</option>`).join("")}
+           </select>`
+        : "";
+
+      return `
+        <div class="product-card" id="${cardId}">
+          <div class="product-class">${first.class}</div>
+          <a href="product.html?id=${first.id}" class="product-name">${groupName}</a>
+          ${variantSelect}
+          <div class="product-price" id="price-${first.id}">$${first.price}</div>
+          <button class="add-btn" id="btn-${first.id}" onclick="addToCart(${first.id})">Add to Cart</button>
+        </div>`;
+    }).join("");
+
+    section.innerHTML = `
+      <div class="category-title"><span>${cat.icon}</span> ${cat.label}</div>
+      <div class="product-grid">${cardsHTML}</div>`;
+
+    main.appendChild(section);
+  });
+}
+
+function onVariantChange(baseId, select) {
+  const selectedOption = select.options[select.selectedIndex];
+  const newId = parseInt(select.value);
+  const price = parseInt(selectedOption.dataset.price);
+  document.getElementById("price-" + baseId).textContent = "$" + price;
+  document.getElementById("btn-" + baseId).onclick = () => addToCart(newId);
+}
+
+function addToCart(id) {
+  const product = PRODUCTS.find(p => p.id === id);
+  const existing = cart.find(i => i.id === id);
+  if (existing) existing.qty++;
+  else cart.push({ ...product, qty: 1 });
+  updateCartUI();
+
+  // Find the button — could be base id or triggered by variant
+  const group = PRODUCTS.filter(p => p.group === product.group && p.category === product.category);
+  const baseId = group[0].id;
+  const btn = document.getElementById("btn-" + baseId);
+  if (btn) {
+    btn.textContent = "✓ Added";
+    btn.classList.add("added");
+    setTimeout(() => { btn.textContent = "Add to Cart"; btn.classList.remove("added"); }, 1200);
+  }
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(i => i.id !== id);
+  updateCartUI();
+  localStorage.setItem('ew_cart', JSON.stringify(cart));
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(i => i.id === id);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) removeFromCart(id);
+  else updateCartUI();
+}
+
+function updateCartUI() {
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const count = cart.reduce((s, i) => s + i.qty, 0);
+  document.getElementById("cartCount").textContent = count;
+  localStorage.setItem('ew_cart', JSON.stringify(cart));
+
+  // Shipping
+  const shippingSelectEl = document.getElementById("cartShippingSelect");
+  const cartShipping = shippingSelectEl ? shippingSelectEl.value : "standard";
+  const shippingCostCart = cartShipping === "twoday" ? 30 : (subtotal >= 250 ? 0 : 10); // free shipping based on subtotal before discount
+
+  // Promo discount
+  const promoDiscount = appliedPromo && PROMO_CODES[appliedPromo] ? PROMO_CODES[appliedPromo] : 0;
+  const promoAmt = subtotal * promoDiscount;
+  const total = subtotal - promoAmt + shippingCostCart;
+
+  // Build summary box
+  const summaryEl = document.getElementById("cartSummaryBox");
+  if (summaryEl && cart.length) {
+    let s = "";
+    s += `<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #E8E2DA;"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>`;
+    if (promoDiscount > 0) {
+      s += `<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #E8E2DA;color:#2a7a2a;"><span>🏷️ ${appliedPromo} (${promoDiscount*100}% off)</span><span>-$${promoAmt.toFixed(2)}</span></div>`;
+    }
+    const shippingLabel = cartShipping === "twoday" ? "2-Day Shipping" : "Standard Shipping";
+    const shippingDisplay = shippingCostCart === 0 ? "<span style=\'color:#2a7a2a;font-weight:700;\'>FREE 🎉</span>" : "$" + shippingCostCart.toFixed(2);
+    s += `<div style="display:flex;justify-content:space-between;padding:3px 0;border-bottom:1px solid #E8E2DA;"><span>${shippingLabel}</span><span>${shippingDisplay}</span></div>`;
+    s += `<div style="display:flex;justify-content:space-between;padding:6px 0;font-weight:700;font-size:15px;"><span>Total Due</span><span style="color:#9B1B1B;">$${total.toFixed(2)}</span></div>`;
+    summaryEl.innerHTML = s;
+    summaryEl.style.display = "block";
+  } else if (summaryEl) {
+    summaryEl.style.display = "none";
+  }
+
+  // Cart total display
+  const cartTotalEl = document.getElementById("cartTotal");
+  if (cartTotalEl) {
+    cartTotalEl.textContent = "$" + total.toFixed(2);
+  }
+
+  const cartItems = document.getElementById("cartItems");
+  if (!cart.length) {
+    cartItems.innerHTML = `<div class="cart-empty">Your cart is empty</div>`;
+    return;
+  }
+  cartItems.innerHTML = cart.map(i => `
+    <div class="cart-item">
+      <div class="cart-item-info">
+        <div class="cart-item-name">${i.group} ${i.variant}</div>
+        <div class="cart-item-price">$${(i.price * i.qty).toFixed(2)}</div>
+      </div>
+      <div class="cart-item-qty">
+        <button class="qty-btn" onclick="changeQty(${i.id},-1)">−</button>
+        <span class="qty-num">${i.qty}</span>
+        <button class="qty-btn" onclick="changeQty(${i.id},1)">+</button>
+      </div>
+    </div>`).join("");
+
+  // Free shipping progress bar
+  const FREE_THRESHOLD = 250;
+  const progressEl = document.getElementById("shippingProgress");
+  if (progressEl) {
+    if (subtotal >= FREE_THRESHOLD) {
+      progressEl.innerHTML = `<div style="background:#f0f8f0;border:1px solid #c3e6c3;border-radius:8px;padding:10px 12px;font-size:12px;color:#2a7a2a;font-weight:600;text-align:center;">🎉 You qualify for FREE standard shipping!</div>`;
+    } else {
+      const remaining = (FREE_THRESHOLD - subtotal).toFixed(2);
+      const pct = Math.min((subtotal / FREE_THRESHOLD) * 100, 100);
+      progressEl.innerHTML = `
+        <div style="font-size:12px;color:#888;margin-bottom:6px;text-align:center;">Add <strong style="color:#9B1B1B;">$${remaining}</strong> more for free standard shipping</div>
+        <div style="background:#E8E2DA;border-radius:20px;height:6px;overflow:hidden;">
+          <div style="background:#9B1B1B;height:100%;width:${pct}%;border-radius:20px;transition:width 0.3s;"></div>
+        </div>`;
+    }
+  }
+
+  // BAC Water upsell
+  const bacInCart = cart.some(i => i.group === "BAC Water");
+  const upsellEl = document.getElementById("bacWaterUpsell");
+  if (upsellEl) {
+    if (!bacInCart && cart.length > 0) {
+      upsellEl.style.display = "flex";
+      upsellEl.innerHTML = `
+        <div style="flex:1;">💧 <strong>Don't forget BAC Water!</strong><br><span style="color:#888;">Required for reconstitution — $8 for 10mL</span></div>
+        <button onclick="addToCart(45)" style="background:#9B1B1B;color:#fff;border:none;border-radius:4px;padding:8px 12px;font-size:12px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:DM Sans,sans-serif;">Add 10mL</button>`;
+    } else {
+      upsellEl.style.display = "none";
+    }
+  }
+}
+
+function openCart() {
+  document.getElementById("cartOverlay").classList.add("open");
+  document.getElementById("cartDrawer").classList.add("open");
+  updateCartUI();
+}
+function closeCart() {
+  document.getElementById("cartOverlay").classList.remove("open");
+  document.getElementById("cartDrawer").classList.remove("open");
+}
+
+function openCheckout() {
+  if (!cart.length) return;
+  closeCart();
+  // Carry shipping from cart
+  const cartShipping = document.getElementById("cartShippingSelect");
+  modalShipping = cartShipping ? cartShipping.value : "standard";
+  // Carry promo from cart
+  modalPromo = appliedPromo || null;
+  if (modalPromo) {
+    document.getElementById("modalPromoInput") && (document.getElementById("modalPromoInput").value = modalPromo);
+  }
+  modalPayment = "venmo";
+  renderStep1();
+  document.getElementById("modalOverlay").classList.add("open");
+}
+
+let modalPayment = "venmo";
+let modalPromo = null;
+let modalShipping = "standard";
+
+function selectModalPayment(method) {
+  modalPayment = method;
+  const venmoBtn = document.getElementById("venmoBtn");
+  const zelleBtn = document.getElementById("zelleBtn");
+  if (method === "venmo") {
+    venmoBtn.style.border = "2px solid #9B1B1B";
+    venmoBtn.style.background = "#fdf5f5";
+    zelleBtn.style.border = "2px solid #E8E2DA";
+    zelleBtn.style.background = "#fff";
+    document.getElementById("modalPromoRow").style.display = "none";
+    modalPromo = null;
+    document.getElementById("modalPromoMsg").textContent = "";
+  } else {
+    zelleBtn.style.border = "2px solid #9B1B1B";
+    zelleBtn.style.background = "#fdf5f5";
+    venmoBtn.style.border = "2px solid #E8E2DA";
+    venmoBtn.style.background = "#fff";
+    document.getElementById("modalPromoRow").style.display = "block";
+    // Re-apply cart promo if exists
+    if (appliedPromo) {
+      modalPromo = appliedPromo;
+      document.getElementById("modalPromoInput").value = appliedPromo;
+      document.getElementById("modalPromoMsg").style.color = "#2a7a2a";
+      document.getElementById("modalPromoMsg").textContent = "✓ " + appliedPromo + " applied";
+    }
+  }
+  renderModalSummary();
+}
+
+function applyModalPromo() {
+  const input = document.getElementById("modalPromoInput").value.trim().toUpperCase();
+  const msg = document.getElementById("modalPromoMsg");
+  if (PROMO_CODES[input]) {
+    modalPromo = input;
+    appliedPromo = input;
+    msg.style.color = "#2a7a2a";
+    msg.textContent = "✓ " + input + " applied — " + (PROMO_CODES[input]*100) + "% off!";
+  } else {
+    modalPromo = null;
+    msg.style.color = "#c0392b";
+    msg.textContent = "Invalid code.";
+  }
+  renderModalSummary();
+}
+
+function applyCartPromo() {
+  const inputEl = document.getElementById("cartPromoInput");
+  if (!inputEl) return;
+  const input = inputEl.value.trim().toUpperCase();
+  const msg = document.getElementById("cartPromoMsg");
+  if (!msg) return;
+  if (PROMO_CODES[input]) {
+    appliedPromo = input;
+    msg.style.color = "#2a7a2a";
+    msg.textContent = "✓ " + input + " applied — " + (PROMO_CODES[input]*100) + "% off!";
+  } else {
+    appliedPromo = null;
+    msg.style.color = "#c0392b";
+    msg.textContent = "Invalid code.";
+  }
+  updateCartUI();
+}
+
+function getModalDiscount() {
+  if (modalPayment === "venmo") return 0.10;
+  if (modalPromo && PROMO_CODES[modalPromo]) return PROMO_CODES[modalPromo];
+  return 0;
+}
+
+function getModalShipping(subtotalBeforeDiscount) {
+  if (modalShipping === "twoday") return 30;
+  if (subtotalBeforeDiscount >= 250) return 0;
+  return 10;
+}
+
+function renderStep1() {
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  document.getElementById("modalItems").innerHTML = `
+    ${cart.map(i => `<div class="modal-item"><span>${i.group} ${i.variant} x${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`).join("")}
+    <div class="modal-total"><span>Subtotal</span><span>$${subtotal.toFixed(2)}</span></div>`;
+  renderModalSummary();
+}
+
+function renderModalSummary() {
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const discount = getModalDiscount();
+  const discountAmt = subtotal * discount;
+  const shippingCost = getModalShipping(subtotal);
+  const total = subtotal - discountAmt + shippingCost;
+
+  let s = "";
+  if (discount > 0) {
+    const discLabel = modalPayment === "venmo" ? "💙 Venmo Discount (10%)" : `🏷️ Promo: ${modalPromo} (${discount*100}% off)`;
+    s += `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #E8E2DA;color:#2a7a2a;font-size:13px;"><span>${discLabel}</span><span>-$${discountAmt.toFixed(2)}</span></div>`;
+  }
+  const shippingLabel = modalShipping === "twoday" ? "2-Day Shipping" : "Standard Shipping";
+  const shippingDisplay = shippingCost === 0 ? "<span style='color:#2a7a2a;font-weight:700;'>FREE 🎉</span>" : "$" + shippingCost.toFixed(2);
+  s += `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #E8E2DA;font-size:13px;"><span>${shippingLabel}</span><span>${shippingDisplay}</span></div>`;
+
+  const discountCount = (discount > 0 ? 1 : 0) + (shippingCost === 0 ? 1 : 0);
+  if (discountCount > 0) {
+    s += `<div style="font-size:11px;color:#2a7a2a;padding:4px 0;border-bottom:1px solid #E8E2DA;">${discountCount} discount${discountCount > 1 ? "s" : ""} applied ✓</div>`;
+  }
+  s += `<div style="display:flex;justify-content:space-between;padding:8px 0;font-size:18px;font-weight:700;"><span>Total Due</span><span style="color:#9B1B1B;">$${total.toFixed(2)}</span></div>`;
+
+  document.getElementById("modalSummaryBox").innerHTML = s;
+}
+
+function goToStep2() {
+  if (!cart.length) return;
+  const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const discount = getModalDiscount();
+  const discountAmt = subtotal * discount;
+  const shippingCost = getModalShipping(subtotal);
+  const total = subtotal - discountAmt + shippingCost;
+
+  // Set hidden fields
+  document.getElementById("hiddenOrderItems").value = cart.map(i => `${i.group} ${i.variant} x${i.qty} ($${(i.price*i.qty).toFixed(2)})`).join(" | ");
+  const discLabel = modalPayment === "venmo" ? "Venmo 10%" : (modalPromo ? `Promo ${modalPromo} ${PROMO_CODES[modalPromo]*100}%` : "none");
+  document.getElementById("hiddenOrderTotal").value = `Subtotal: $${subtotal.toFixed(2)} | Discount: ${discLabel} -$${discountAmt.toFixed(2)} | Shipping: ${modalShipping === "twoday" ? "2-Day $30" : (shippingCost === 0 ? "FREE" : "Standard $10")} | TOTAL DUE: $${total.toFixed(2)}`;
+  document.getElementById("hiddenPayment").value = modalPayment === "venmo" ? "Venmo @EllesWorldResearch" : "Zelle (707) 291-9669";
+  document.getElementById("hiddenPromo").value = modalPromo || "none";
+  document.getElementById("hiddenShipping").value = modalShipping === "twoday" ? "2-Day $30" : (shippingCost === 0 ? "Standard FREE" : "Standard $10");
+
+  // Mini summary for step 2
+  document.getElementById("step2Summary").innerHTML = `
+    <div style="font-weight:700;margin-bottom:6px;">Order Summary</div>
+    ${cart.map(i => `<div style="display:flex;justify-content:space-between;font-size:12px;padding:2px 0;">${i.group} ${i.variant} x${i.qty}<span>$${(i.price*i.qty).toFixed(2)}</span></div>`).join("")}
+    <div style="border-top:1px solid #E8E2DA;margin-top:6px;padding-top:6px;display:flex;justify-content:space-between;font-weight:700;color:#9B1B1B;">
+      <span>Total Due</span><span>$${total.toFixed(2)}</span>
+    </div>
+    <div style="font-size:11px;color:#888;margin-top:4px;">Payment: ${modalPayment === "venmo" ? `Venmo <a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>` : `Zelle <a href="tel:7072919669">(707) 291-9669</a>`}</div>`;
+
+  document.getElementById("step1").style.display = "none";
+  document.getElementById("step2").style.display = "block";
+}
+
+function goToStep1() {
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step1").style.display = "block";
+}
+
+function clearCart() {
+  cart = [];
+  appliedPromo = null;
+  updateCartUI();
+}
+
+// Formspree submit
+// Formspree submit
+document.addEventListener("DOMContentLoaded", function() {
+  const form = document.getElementById("orderForm");
+  if (form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      const agreeBox = document.getElementById('researchAgreementCheck');
+      const agreeErr = document.getElementById('researchAgreementError');
+      if (agreeBox && !agreeBox.checked) {
+        agreeErr.style.display = 'block';
+        agreeBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
+      if (agreeErr) agreeErr.style.display = 'none';
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const discount = getModalDiscount();
+      const discountAmt = subtotal * discount;
+      const shippingCost = getModalShipping(subtotal);
+      const total = (subtotal - discountAmt + shippingCost).toFixed(2);
+
+      // Assemble structured address fields into one hidden field for the email
+      const street  = (form.street_address ? form.street_address.value : "").trim();
+      const line2   = (form.address_line2  ? form.address_line2.value  : "").trim();
+      const city    = (form.city           ? form.city.value           : "").trim();
+      const state   = (form.state          ? form.state.value          : "").trim();
+      const zip     = (form.zip            ? form.zip.value            : "").trim();
+      const fullAddr = [street, line2, city + (state ? ", " + state : ""), zip].filter(Boolean).join(", ");
+      let hiddenAddr = form.querySelector('input[name="shipping_address"]');
+      if (!hiddenAddr) {
+        hiddenAddr = document.createElement("input");
+        hiddenAddr.type = "hidden";
+        hiddenAddr.name = "shipping_address";
+        form.appendChild(hiddenAddr);
+      }
+      hiddenAddr.value = fullAddr;
+
+      fetch("https://formspree.io/f/mgoryakp", {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      }).then(r => {
+        if (r.ok) {
+          const payMsg = modalPayment === "venmo"
+            ? `Please send <strong>$${total}</strong> to <a href="https://venmo.com/EllesWorldResearch" target="_blank"><strong>@EllesWorldResearch</strong></a> on Venmo to complete your purchase.`
+            : `Please send <strong>$${total}</strong> via Zelle to <a href="tel:7072919669"><strong>(707) 291-9669</strong></a> to complete your purchase.`;
+          document.getElementById("confirmMsg").innerHTML = "Elle\'s World Research has your order and will be in touch shortly.<br><br>" + payMsg;
+          document.getElementById("step2").style.display = "none";
+          document.getElementById("step3").style.display = "block";
+        } else {
+          alert("Something went wrong. Please email orders@ellesworldresearch.net directly.");
+        }
+      }).catch(() => {
+        alert("Something went wrong. Please email orders@ellesworldresearch.net directly.");
+      });
+    });
+  }
+});
+
+function closeCheckout() {
+  document.getElementById("modalOverlay").classList.remove("open");
+  document.getElementById("step1").style.display = "block";
+  document.getElementById("step2").style.display = "none";
+  document.getElementById("step3").style.display = "none";
+}
+
+function backToCart() {
+  document.getElementById("modalOverlay").classList.remove("open");
+  openCart();
+}
+
+function filterCat(cat, btn) {
+  document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+  btn.classList.add("active");
+  renderShop(cat);
+}
+
+fetch("/products.json")
+  .then(r => r.json())
+  .then(data => {
+    PRODUCTS = data;
+    const saved = localStorage.getItem('ew_cart');
+    if (saved) { try { cart = JSON.parse(saved); } catch(e) {} }
+    updateCartUI();
+    if (document.getElementById("shopMain")) renderShop("all");
+  })
+  .catch(() => {
+    console.error("Failed to load products.json");
+  });
 </script>
 </body>
 </html>

@@ -8,7 +8,9 @@
       "Bash(python audit_venmo.py)",
       "Bash(python fix_venmo_zelle.py)",
       "Bash(python fix_about_emojis.py)",
-      "Bash(python fix_logo2.py)"
+      "Bash(python fix_logo2.py)",
+      "Bash(python add_age_gate.py)",
+      "Bash(python audit_cart.py)"
     ]
   }
 }

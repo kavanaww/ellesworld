@@ -273,6 +273,47 @@
   </style>
 </head>
 <body>
+<!-- EW AGE GATE -->
+<div id="ew-age-gate" style="position:fixed;inset:0;z-index:99999;background:rgba(15,15,15,0.97);display:flex;align-items:center;justify-content:center;font-family:'DM Sans',sans-serif;">
+  <div style="background:#fff;border-radius:12px;padding:48px 40px;max-width:500px;width:90%;text-align:center;box-shadow:0 24px 64px rgba(0,0,0,0.6);">
+    <img src="/assets/logo2.png" alt="Elle's World Research" style="height:90px;width:auto;margin-bottom:24px;display:block;margin-left:auto;margin-right:auto;">
+    <h2 style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#1A1A1A;margin:0 0 8px;">Welcome to Elle's World Research</h2>
+    <p style="font-size:14px;color:#777;margin:0 0 28px;line-height:1.6;">Please confirm the following before entering.</p>
+    <div style="text-align:left;display:flex;flex-direction:column;gap:16px;margin-bottom:28px;">
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;color:#1A1A1A;line-height:1.6;">
+        <input type="checkbox" id="ew-check1" onchange="ewCheckGate()" style="margin-top:3px;width:18px;height:18px;min-width:18px;accent-color:#9B1B1B;cursor:pointer;">
+        I confirm that I am 21 years of age or older
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:12px;cursor:pointer;font-size:14px;color:#1A1A1A;line-height:1.6;">
+        <input type="checkbox" id="ew-check2" onchange="ewCheckGate()" style="margin-top:3px;width:18px;height:18px;min-width:18px;accent-color:#9B1B1B;cursor:pointer;">
+        I confirm that I understand all products are for research purposes only and not for human or veterinary use
+      </label>
+    </div>
+    <button id="ew-enter-btn" onclick="ewEnterSite()" disabled style="width:100%;padding:14px;background:#9B1B1B;color:#fff;border:none;border-radius:6px;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:700;letter-spacing:0.05em;cursor:not-allowed;opacity:0.4;transition:opacity 0.2s;">Enter Site</button>
+    <p style="margin:16px 0 0;font-size:11px;color:#aaa;line-height:1.6;">By entering you agree to our <a href="/pages/research-agreement.html" style="color:#9B1B1B;text-decoration:underline;">Research Use Only Agreement</a>.</p>
+  </div>
+</div>
+<script>
+(function(){
+  if(localStorage.getItem('ew_confirmed')==='1'){
+    var g=document.getElementById('ew-age-gate');
+    if(g) g.style.display='none';
+  }
+})();
+function ewCheckGate(){
+  var ok=document.getElementById('ew-check1').checked&&document.getElementById('ew-check2').checked;
+  var btn=document.getElementById('ew-enter-btn');
+  btn.disabled=!ok;
+  btn.style.opacity=ok?'1':'0.4';
+  btn.style.cursor=ok?'pointer':'not-allowed';
+}
+function ewEnterSite(){
+  localStorage.setItem('ew_confirmed','1');
+  document.getElementById('ew-age-gate').style.display='none';
+}
+</script>
+<!-- END EW AGE GATE -->
+
 
 <nav class="nav">
   <a href="../index.html" class="nav-logo">
@@ -495,9 +536,9 @@ let modalShipping = "standard";
 const PROMO_CODES = { "BECCA": 0.10, "MARRI": 0.10 };
 
 // ── Cart persistence ─────────────────────────────────────────────────────────
-function saveCart() { sessionStorage.setItem('ew_cart', JSON.stringify(cart)); }
+function saveCart() { localStorage.setItem('ew_cart', JSON.stringify(cart)); }
 function loadCart() {
-  try { cart = JSON.parse(sessionStorage.getItem('ew_cart') || '[]'); } catch(e) { cart = []; }
+  try { cart = JSON.parse(localStorage.getItem('ew_cart') || '[]'); } catch(e) { cart = []; }
 }
 
 // ── Cart functions (identical to shop.html) ──────────────────────────────────
