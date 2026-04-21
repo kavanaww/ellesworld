@@ -210,6 +210,24 @@
     @media (max-width: 480px) {
       .footer-inner { grid-template-columns: 1fr; }
     }
+  
+    /* ── Mobile additions ── */
+    @media (max-width: 768px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .page-header h1 { font-size: 28px; }
+      .filter-bar { overflow-x: auto; flex-wrap: nowrap; }
+      .filter-btn { flex-shrink: 0; }
+      .modal input, .modal select, .modal textarea {
+        width: 100%; box-sizing: border-box;
+      }
+      .modal button { width: 100%; }
+      .checkout-btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .filter-btn { font-size: 11px; padding: 6px 10px; }
+      .modal { border-radius: 8px; }
+    }
   </style>
 </head>
 <body>
@@ -307,24 +325,6 @@
 <div class="page-header">
   <h1>Product Catalog</h1>
   <p>All products are third-party tested · Research use only · Not for human consumption</p>
-</div>
-<div class="disclaimer-bar">
-  Must be 18+ · Complete the <a href="research-agreement.html" style="color:#fff;text-decoration:underline;">Research Use Only Agreement</a> before ordering
-</div>
-
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filterCat('all',this)">All Products</button>
-  <button class="filter-btn" onclick="filterCat('healing',this)">🩹 Tissue Repair</button>
-  <button class="filter-btn" onclick="filterCat('glp',this)">🔥 Metabolic</button>
-  <button class="filter-btn" onclick="filterCat('ghrp',this)">💪 Growth Hormone</button>
-  <button class="filter-btn" onclick="filterCat('cognitive',this)">🧠 Cognitive</button>
-  <button class="filter-btn" onclick="filterCat('longevity',this)">🧬 Longevity</button>
-  <button class="filter-btn" onclick="filterCat('cosmetic',this)">💅 Aesthetic</button>
-  <button class="filter-btn" onclick="filterCat('mitochondrial',this)">⚡ Cellular Energy</button>
-  <button class="filter-btn" onclick="filterCat('mood',this)">🌙 Mood & Sleep</button>
-  <button class="filter-btn" onclick="filterCat('immune',this)">🛡️ Immune Support</button>
-  <button class="filter-btn" onclick="filterCat('sexual',this)">🍆💦 Sexual Wellness</button>
-  <button class="filter-btn" onclick="filterCat('recon',this)">💧 Reconstitution</button>
 </div>
 
 <div class="shop-main" id="shopMain"></div>

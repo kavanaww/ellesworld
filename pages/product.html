@@ -258,6 +258,18 @@
     @media (max-width: 480px) {
       .footer-inner { grid-template-columns: 1fr; }
     }
+  
+    /* ── Mobile additions ── */
+    @media (max-width: 768px) {
+      .modal input, .modal select, .modal textarea {
+        width: 100%; box-sizing: border-box;
+      }
+      .modal button { width: 100%; }
+      .checkout-btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .modal { border-radius: 8px; }
+    }
   </style>
 </head>
 <body>

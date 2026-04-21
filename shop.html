@@ -411,6 +411,24 @@
     @media (max-width: 480px) {
       .footer-inner { grid-template-columns: 1fr; }
     }
+  
+    /* ── Mobile additions ── */
+    @media (max-width: 768px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .page-header h1 { font-size: 28px; }
+      .filter-bar { overflow-x: auto; flex-wrap: nowrap; }
+      .filter-btn { flex-shrink: 0; }
+      .modal input, .modal select, .modal textarea {
+        width: 100%; box-sizing: border-box;
+      }
+      .modal button { width: 100%; }
+      .checkout-btn { width: 100%; }
+    }
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: 1fr; }
+      .filter-btn { font-size: 11px; padding: 6px 10px; }
+      .modal { border-radius: 8px; }
+    }
   </style>
 </head>
 <body>
