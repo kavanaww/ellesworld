@@ -15,7 +15,13 @@
       "Bash(python -c ' *)",
       "Bash(python c:/Users/timot/ellesworld/fix_audit_issues.py)",
       "Bash(python -)",
-      "Bash(echo \"Exit:$?\")"
+      "Bash(echo \"Exit:$?\")",
+      "Bash(python fix_consistency.py)",
+      "Bash(python fix_polish.py)",
+      "Bash(python fix_final3.py)",
+      "Bash(python fix_css_vars.py)",
+      "Bash(git reset *)",
+      "Bash(git push *)"
     ]
   }
 }
