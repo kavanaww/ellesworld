@@ -14,7 +14,8 @@
       "Bash(python full_audit.py)",
       "Bash(python -c ' *)",
       "Bash(python c:/Users/timot/ellesworld/fix_audit_issues.py)",
-      "Bash(python -)"
+      "Bash(python -)",
+      "Bash(echo \"Exit:$?\")"
     ]
   }
 }
