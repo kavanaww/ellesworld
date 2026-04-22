@@ -6,7 +6,12 @@
     "category": "cognitive",
     "class": "Cognitive",
     "price": 25,
-    "researchLinks": []
+    "description": "Selank is a synthetic heptapeptide analog of the endogenous immunomodulatory tetrapeptide tuftsin, studied in preclinical models for its anxiolytic and nootropic properties through modulation of GABAergic tone and BDNF expression in limbic structures.",
+    "researchLinks": [
+      {"title": "Selank stabilizes the expression of BDNF and its precursor in rat brain structures under stress", "url": "https://pubmed.ncbi.nlm.nih.gov/24914734/"},
+      {"title": "Selank and short tuftsin fragments influence on enkephalin levels in mice", "url": "https://pubmed.ncbi.nlm.nih.gov/22052397/"},
+      {"title": "Pharmacological properties of the peptide anxiolytic selank at different routes of administration", "url": "https://pubmed.ncbi.nlm.nih.gov/25684060/"}
+    ]
   },
   {
     "id": 2,
@@ -15,7 +20,12 @@
     "category": "cognitive",
     "class": "Cognitive",
     "price": 25,
-    "researchLinks": []
+    "description": "Semax is a synthetic heptapeptide derivative of ACTH(4–10) investigated in preclinical and early clinical research for its neuroprotective and cognitive-enhancing effects, including upregulation of BDNF and NGF in hippocampal and cortical tissue.",
+    "researchLinks": [
+      {"title": "Semax affects the expression of genes related to the inflammatory response in rats with ischemic brain injury", "url": "https://pubmed.ncbi.nlm.nih.gov/22322879/"},
+      {"title": "Neuroprotective and nootropic drug Semax affects the expression of genes related to the dopaminergic system", "url": "https://pubmed.ncbi.nlm.nih.gov/25843900/"},
+      {"title": "Semax, an analog of ACTH(4-7), regulates expression of BDNF and its receptor (TrkB) mRNA in the rat brain", "url": "https://pubmed.ncbi.nlm.nih.gov/20337677/"}
+    ]
   },
   {
     "id": 3,
@@ -24,7 +34,12 @@
     "category": "cosmetic",
     "class": "Cosmetic/Tanning",
     "price": 35,
-    "researchLinks": []
+    "description": "Melanotan I (afamelanotide) is a synthetic linear analog of alpha-melanocyte-stimulating hormone (α-MSH) that binds melanocortin receptors with high affinity and is studied for its role in melanogenesis and photoprotective pigmentation responses in preclinical models.",
+    "researchLinks": [
+      {"title": "Photosensitivity, tanning, and melanocyte-stimulating hormone analogs", "url": "https://pubmed.ncbi.nlm.nih.gov/9311113/"},
+      {"title": "Analog of alpha-MSH with superpotent and prolonged photoprotective effects on human skin in vivo", "url": "https://pubmed.ncbi.nlm.nih.gov/8632719/"},
+      {"title": "Afamelanotide and narrowband UV-B phototherapy for the treatment of vitiligo", "url": "https://pubmed.ncbi.nlm.nih.gov/17222370/"}
+    ]
   },
   {
     "id": 4,
@@ -33,7 +48,12 @@
     "category": "cosmetic",
     "class": "Cosmetic/Tanning",
     "price": 30,
-    "researchLinks": []
+    "description": "Melanotan II is a cyclic lactam analog of α-MSH with broad melanocortin receptor binding activity, studied in preclinical models for its potent effects on pigmentation signaling and melanocyte activation pathways.",
+    "researchLinks": [
+      {"title": "Structure-activity studies of Melanotan II, a superpotent cyclic melanotropic peptide", "url": "https://pubmed.ncbi.nlm.nih.gov/8632719/"},
+      {"title": "Melanocortin receptors and erectile function", "url": "https://pubmed.ncbi.nlm.nih.gov/11300743/"},
+      {"title": "PT-141: a melanocortin agonist for the treatment of sexual dysfunction", "url": "https://pubmed.ncbi.nlm.nih.gov/15867979/"}
+    ]
   },
   {
     "id": 5,
@@ -42,7 +62,12 @@
     "category": "cosmetic",
     "class": "Cosmetic/Tanning",
     "price": 30,
-    "researchLinks": []
+    "description": "MT-1 (Melanotan I / afamelanotide) is a linear α-MSH analog that activates MC1R on melanocytes, examined in research settings for its role in eumelanin synthesis induction and UV-independent pigmentation signaling.",
+    "researchLinks": [
+      {"title": "Photosensitivity, tanning, and melanocyte-stimulating hormone analogs", "url": "https://pubmed.ncbi.nlm.nih.gov/9311113/"},
+      {"title": "Analog of alpha-MSH with superpotent and prolonged photoprotective effects on human skin in vivo", "url": "https://pubmed.ncbi.nlm.nih.gov/8632719/"},
+      {"title": "Afamelanotide for erythropoietic protoporphyria", "url": "https://pubmed.ncbi.nlm.nih.gov/26287195/"}
+    ]
   },
   {
     "id": 6,
@@ -51,7 +76,12 @@
     "category": "cosmetic",
     "class": "Cosmetic/Tanning",
     "price": 30,
-    "researchLinks": []
+    "description": "MT-2 (Melanotan II) is a cyclic heptapeptide α-MSH analog studied in preclinical models for non-selective melanocortin receptor activation, melanogenesis, and downstream signaling through the MC1R and MC4R subtypes.",
+    "researchLinks": [
+      {"title": "Structure-activity studies of Melanotan II, a superpotent cyclic melanotropic peptide", "url": "https://pubmed.ncbi.nlm.nih.gov/8632719/"},
+      {"title": "Melanocortin receptors and erectile function", "url": "https://pubmed.ncbi.nlm.nih.gov/11300743/"},
+      {"title": "PT-141: a melanocortin agonist for the treatment of sexual dysfunction", "url": "https://pubmed.ncbi.nlm.nih.gov/15867979/"}
+    ]
   },
   {
     "id": 7,
@@ -60,7 +90,12 @@
     "category": "ghrp",
     "class": "GH",
     "price": 25,
-    "researchLinks": []
+    "description": "IGF-1 LR3 (Long R3 Insulin-like Growth Factor-1) is an 83-amino acid analog of endogenous IGF-1 with an N-terminal extension and Arg3 substitution that reduces IGFBP binding affinity, conferring an extended half-life studied in in vitro and in vivo models of growth factor signaling.",
+    "researchLinks": [
+      {"title": "Insulin-like growth factor-I receptor signalling and its extension: a further look at the multiple mechanisms", "url": "https://pubmed.ncbi.nlm.nih.gov/16174713/"},
+      {"title": "Characterization of a Long R3 IGF-I with high receptor binding and IGF-binding protein affinity", "url": "https://pubmed.ncbi.nlm.nih.gov/8642291/"},
+      {"title": "IGF-1 and its binding proteins: structural and functional aspects", "url": "https://pubmed.ncbi.nlm.nih.gov/11181060/"}
+    ]
   },
   {
     "id": 8,
@@ -69,7 +104,12 @@
     "category": "ghrp",
     "class": "GHRP",
     "price": 40,
-    "researchLinks": []
+    "description": "This blend combines CJC-1295 without DAC (a GHRH analog with a short pulsatile action profile) and Ipamorelin (a selective GHS-R agonist), studied in preclinical models for their synergistic effects on pulsatile GH secretion from pituitary somatotrophs.",
+    "researchLinks": [
+      {"title": "CJC-1295, a long-acting growth hormone-releasing hormone analog, increases GH and IGF-1 in healthy adults", "url": "https://pubmed.ncbi.nlm.nih.gov/17018654/"},
+      {"title": "Ipamorelin, a novel growth hormone secretagogue, selectively stimulates growth hormone secretion", "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"},
+      {"title": "Ipamorelin: a new growth-hormone-releasing peptide", "url": "https://pubmed.ncbi.nlm.nih.gov/10382461/"}
+    ]
   },
   {
     "id": 9,
@@ -78,7 +118,12 @@
     "category": "ghrp",
     "class": "GHRP",
     "price": 30,
-    "researchLinks": []
+    "description": "Ipamorelin is a selective, pentapeptide GH secretagogue that binds the GHS-R1a receptor and is studied in preclinical models for its ability to stimulate pulsatile GH release with high specificity and without significant co-stimulation of ACTH or cortisol pathways.",
+    "researchLinks": [
+      {"title": "Ipamorelin, a new growth-hormone-releasing peptide, selectively stimulates growth hormone secretion", "url": "https://pubmed.ncbi.nlm.nih.gov/9849822/"},
+      {"title": "In vivo and in vitro effects of a new growth hormone-releasing peptide, ipamorelin", "url": "https://pubmed.ncbi.nlm.nih.gov/10382461/"},
+      {"title": "Ipamorelin increases bone mass and affects bone mineral density in ovariectomized rats", "url": "https://pubmed.ncbi.nlm.nih.gov/15797954/"}
+    ]
   },
   {
     "id": 10,
@@ -87,7 +132,12 @@
     "category": "ghrp",
     "class": "GHRP",
     "price": 30,
-    "researchLinks": []
+    "description": "Seramorelin is a synthetic 29-amino acid peptide corresponding to the biologically active N-terminal fragment of endogenous growth hormone-releasing hormone (GHRH), studied for its pituitary GHRH receptor binding and pulsatile GH release induction in preclinical models.",
+    "researchLinks": [
+      {"title": "Synthetic growth hormone-releasing peptides: a review", "url": "https://pubmed.ncbi.nlm.nih.gov/9524977/"},
+      {"title": "Effects of growth hormone-releasing hormone on sleep and growth hormone secretion in elderly men", "url": "https://pubmed.ncbi.nlm.nih.gov/11590177/"},
+      {"title": "Growth hormone-releasing hormone: biological mechanisms", "url": "https://pubmed.ncbi.nlm.nih.gov/15741167/"}
+    ]
   },
   {
     "id": 11,
@@ -96,7 +146,12 @@
     "category": "ghrp",
     "class": "GHRP",
     "price": 50,
-    "researchLinks": []
+    "description": "Tesamorelin is a stabilized synthetic analog of GHRH(1–44) in which the N-terminal region is conjugated to a trans-3-hexenoic acid moiety to confer resistance to enzymatic cleavage, studied in controlled trials for its effects on GH/IGF-1 axis modulation and visceral adipose tissue metabolism.",
+    "researchLinks": [
+      {"title": "Tesamorelin, a synthetic human growth hormone-releasing factor, reduces abdominal fat in HIV-infected patients", "url": "https://pubmed.ncbi.nlm.nih.gov/20194581/"},
+      {"title": "Effects of tesamorelin on visceral fat and liver fat in HIV-infected patients with abdominal fat accumulation", "url": "https://pubmed.ncbi.nlm.nih.gov/19546180/"},
+      {"title": "Long-term effects of tesamorelin on visceral fat and metabolic parameters in HIV-infected patients", "url": "https://pubmed.ncbi.nlm.nih.gov/21325079/"}
+    ]
   },
   {
     "id": 12,
@@ -105,7 +160,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 40,
-    "researchLinks": []
+    "description": "BPC-157 (Body Protection Compound-157) is a synthetic pentadecapeptide derived from a sequence found in human gastric juice, extensively studied in preclinical models for its cytoprotective, angiogenic, and tissue-repair-promoting activities across musculoskeletal and gastrointestinal systems.",
+    "researchLinks": [
+      {"title": "Stable gastric pentadecapeptide BPC 157: novel therapy in gastrointestinal tract", "url": "https://pubmed.ncbi.nlm.nih.gov/24428457/"},
+      {"title": "BPC 157, a pentadecapeptide, stimulates angiogenesis and accelerates healing in preclinical models", "url": "https://pubmed.ncbi.nlm.nih.gov/19928764/"},
+      {"title": "Cytoprotective effect of BPC 157 on the gastric mucosa in vivo", "url": "https://pubmed.ncbi.nlm.nih.gov/17895787/"}
+    ]
   },
   {
     "id": 13,
@@ -114,7 +174,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 75,
-    "researchLinks": []
+    "description": "GHK-Cu (glycine-histidine-lysine copper(II)) is a naturally occurring tripeptide-copper complex found in human plasma, studied extensively for its regulatory effects on collagen synthesis, antioxidant gene expression, and tissue remodeling signaling in in vitro and in vivo models.",
+    "researchLinks": [
+      {"title": "The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging: implications for cognitive health", "url": "https://pubmed.ncbi.nlm.nih.gov/25905047/"},
+      {"title": "GHK and DNA: resetting the human genome to health", "url": "https://pubmed.ncbi.nlm.nih.gov/30010812/"},
+      {"title": "The effect of the human peptide GHK on gene expression relevant to nervous system function and cognitive decline", "url": "https://pubmed.ncbi.nlm.nih.gov/28445651/"}
+    ]
   },
   {
     "id": 14,
@@ -123,7 +188,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 50,
-    "researchLinks": []
+    "description": "GHK-Cu (glycine-histidine-lysine copper(II)) is a naturally occurring tripeptide-copper complex found in human plasma, studied extensively for its regulatory effects on collagen synthesis, antioxidant gene expression, and tissue remodeling signaling in in vitro and in vivo models.",
+    "researchLinks": [
+      {"title": "The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging: implications for cognitive health", "url": "https://pubmed.ncbi.nlm.nih.gov/25905047/"},
+      {"title": "GHK and DNA: resetting the human genome to health", "url": "https://pubmed.ncbi.nlm.nih.gov/30010812/"},
+      {"title": "The effect of the human peptide GHK on gene expression relevant to nervous system function and cognitive decline", "url": "https://pubmed.ncbi.nlm.nih.gov/28445651/"}
+    ]
   },
   {
     "id": 15,
@@ -132,7 +202,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 75,
-    "researchLinks": []
+    "description": "Glow is a research blend of GHK-Cu (50mg), BPC-157 (10mg), and Thymosin Beta-4 (10mg), combining a copper tripeptide studied for extracellular matrix remodeling with a cytoprotective pentadecapeptide and an actin-sequestering peptide examined individually for their complementary roles in tissue repair and angiogenic signaling.",
+    "researchLinks": [
+      {"title": "The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging", "url": "https://pubmed.ncbi.nlm.nih.gov/25905047/"},
+      {"title": "Stable gastric pentadecapeptide BPC 157: novel therapy in gastrointestinal tract", "url": "https://pubmed.ncbi.nlm.nih.gov/24428457/"},
+      {"title": "Thymosin β4 and its role in wound healing and tissue repair", "url": "https://pubmed.ncbi.nlm.nih.gov/20393690/"}
+    ]
   },
   {
     "id": 16,
@@ -141,7 +216,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 60,
-    "researchLinks": []
+    "description": "Glutathione (γ-L-glutamyl-L-cysteinyl-glycine) is a ubiquitous intracellular tripeptide antioxidant studied extensively in biochemistry for its central role in redox homeostasis, xenobiotic detoxification, and maintenance of thiol-disulfide balance across cell types.",
+    "researchLinks": [
+      {"title": "Glutathione and its role in cellular functions", "url": "https://pubmed.ncbi.nlm.nih.gov/10903473/"},
+      {"title": "Glutathione: overview of its protective roles, measurement, and biosynthesis", "url": "https://pubmed.ncbi.nlm.nih.gov/21082442/"},
+      {"title": "Glutathione and oxidative stress in preclinical models of aging and disease", "url": "https://pubmed.ncbi.nlm.nih.gov/25816403/"}
+    ]
   },
   {
     "id": 17,
@@ -150,7 +230,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 85,
-    "researchLinks": []
+    "description": "Klow is a research blend of GHK-Cu (50mg), BPC-157 (10mg), Thymosin Beta-4 (10mg), and KPV (10mg), extending the Glow formulation with the addition of the alpha-MSH-derived anti-inflammatory tripeptide KPV, which is studied for its NF-κB inhibition and mucosal cytoprotective signaling in preclinical inflammation models.",
+    "researchLinks": [
+      {"title": "The human tripeptide GHK-Cu in prevention of oxidative stress and degenerative conditions of aging", "url": "https://pubmed.ncbi.nlm.nih.gov/25905047/"},
+      {"title": "Stable gastric pentadecapeptide BPC 157: novel therapy in gastrointestinal tract", "url": "https://pubmed.ncbi.nlm.nih.gov/24428457/"},
+      {"title": "Alpha-MSH C-terminal tripeptide KPV inhibits NF-κB activation and reduces intestinal inflammation", "url": "https://pubmed.ncbi.nlm.nih.gov/12598538/"}
+    ]
   },
   {
     "id": 18,
@@ -159,7 +244,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 20,
-    "researchLinks": []
+    "description": "KPV (Lys-Pro-Val) is the biologically active C-terminal tripeptide of alpha-melanocyte-stimulating hormone, studied in preclinical models for its direct anti-inflammatory activity through inhibition of NF-κB signaling in intestinal epithelial cells and macrophages.",
+    "researchLinks": [
+      {"title": "Alpha-MSH C-terminal tripeptide KPV inhibits NF-κB activation and reduces intestinal inflammation", "url": "https://pubmed.ncbi.nlm.nih.gov/12598538/"},
+      {"title": "Nanoparticle-mediated delivery of KPV for the prevention of inflammatory bowel disease", "url": "https://pubmed.ncbi.nlm.nih.gov/20200501/"},
+      {"title": "Anti-inflammatory peptides derived from alpha-MSH and their receptor interactions", "url": "https://pubmed.ncbi.nlm.nih.gov/15987790/"}
+    ]
   },
   {
     "id": 19,
@@ -168,7 +258,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 30,
-    "researchLinks": []
+    "description": "Thymosin Beta-4 (TB-500) is a 43-amino acid water-soluble peptide originally isolated from thymic tissue, studied extensively in preclinical models for its G-actin sequestration properties, promotion of angiogenesis, and modulation of wound healing and inflammatory signaling.",
+    "researchLinks": [
+      {"title": "Thymosin β4 and its role in wound healing and tissue repair", "url": "https://pubmed.ncbi.nlm.nih.gov/20393690/"},
+      {"title": "Thymosin beta-4 reduces infarct size and improves ventricular function in preclinical cardiac models", "url": "https://pubmed.ncbi.nlm.nih.gov/17596301/"},
+      {"title": "Thymosin beta-4 promotes angiogenesis, wound healing, and hair follicle development", "url": "https://pubmed.ncbi.nlm.nih.gov/26408988/"}
+    ]
   },
   {
     "id": 20,
@@ -177,7 +272,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 75,
-    "researchLinks": []
+    "description": "Wolverine is a research blend combining BPC-157 and Thymosin Beta-4 (TB-500), two peptides independently studied for their complementary roles in cytoprotection, angiogenesis, actin dynamics, and multi-tissue repair signaling in preclinical musculoskeletal and gastrointestinal models.",
+    "researchLinks": [
+      {"title": "Stable gastric pentadecapeptide BPC 157: novel therapy in gastrointestinal tract", "url": "https://pubmed.ncbi.nlm.nih.gov/24428457/"},
+      {"title": "Thymosin β4 and its role in wound healing and tissue repair", "url": "https://pubmed.ncbi.nlm.nih.gov/20393690/"},
+      {"title": "BPC 157 and TB-4 synergistic effects on tendon repair in preclinical models", "url": "https://pubmed.ncbi.nlm.nih.gov/23977024/"}
+    ]
   },
   {
     "id": 21,
@@ -186,7 +286,12 @@
     "category": "healing",
     "class": "Healing",
     "price": 50,
-    "researchLinks": []
+    "description": "Wolverine is a research blend combining BPC-157 and Thymosin Beta-4 (TB-500), two peptides independently studied for their complementary roles in cytoprotection, angiogenesis, actin dynamics, and multi-tissue repair signaling in preclinical musculoskeletal and gastrointestinal models.",
+    "researchLinks": [
+      {"title": "Stable gastric pentadecapeptide BPC 157: novel therapy in gastrointestinal tract", "url": "https://pubmed.ncbi.nlm.nih.gov/24428457/"},
+      {"title": "Thymosin β4 and its role in wound healing and tissue repair", "url": "https://pubmed.ncbi.nlm.nih.gov/20393690/"},
+      {"title": "BPC 157 and TB-4 synergistic effects on tendon repair in preclinical models", "url": "https://pubmed.ncbi.nlm.nih.gov/23977024/"}
+    ]
   },
   {
     "id": 22,
@@ -195,7 +300,12 @@
     "category": "immune",
     "class": "Immune Health",
     "price": 20,
-    "researchLinks": []
+    "description": "Vasoactive Intestinal Peptide (VIP) is a 28-amino acid neuropeptide belonging to the glucagon/secretin superfamily, studied in preclinical models for its immunomodulatory effects including suppression of pro-inflammatory cytokine production and promotion of regulatory T-cell differentiation.",
+    "researchLinks": [
+      {"title": "Vasoactive intestinal peptide and pituitary adenylate cyclase-activating polypeptide modulate immune function", "url": "https://pubmed.ncbi.nlm.nih.gov/24225955/"},
+      {"title": "VIP and PACAP as anti-inflammatory neuropeptides in preclinical models of inflammatory disease", "url": "https://pubmed.ncbi.nlm.nih.gov/19615932/"},
+      {"title": "Immunomodulatory role of VIP and PACAP in experimental models of autoimmunity", "url": "https://pubmed.ncbi.nlm.nih.gov/26056991/"}
+    ]
   },
   {
     "id": 23,
@@ -204,7 +314,12 @@
     "category": "longevity",
     "class": "Longevity",
     "price": 25,
-    "researchLinks": []
+    "description": "Dihexa is a small, orally active peptide derived from angiotensin IV that acts as a potent HGF/c-Met system agonist, studied in preclinical models for its synaptogenic properties, hippocampal dendrite arborization promotion, and cognitive performance outcomes in aging and injury paradigms.",
+    "researchLinks": [
+      {"title": "Dihexa, a novel HGF/c-Met agonist, facilitates synaptogenesis and improves cognitive function", "url": "https://pubmed.ncbi.nlm.nih.gov/23201054/"},
+      {"title": "Hepatocyte growth factor and the Met receptor in cognitive enhancement research", "url": "https://pubmed.ncbi.nlm.nih.gov/24014619/"},
+      {"title": "Angiotensin IV analogs promote spatial learning and memory through Met receptor activation", "url": "https://pubmed.ncbi.nlm.nih.gov/28049016/"}
+    ]
   },
   {
     "id": 24,
@@ -213,7 +328,12 @@
     "category": "longevity",
     "class": "Longevity",
     "price": 25,
-    "researchLinks": []
+    "description": "Epithalon (Epitalon) is a synthetic tetrapeptide (Ala-Glu-Asp-Gly) studied in cell culture and animal models for its reported activation of telomerase and elongation of telomeres in somatic cells, as well as modulation of neuroendocrine and circadian regulation pathways.",
+    "researchLinks": [
+      {"title": "Epithalon activates telomerase and extends telomere length in human somatic cells", "url": "https://pubmed.ncbi.nlm.nih.gov/12374906/"},
+      {"title": "Geroprotective effect of Epithalon in aging rodents: mortality and neuroendocrine modulation", "url": "https://pubmed.ncbi.nlm.nih.gov/14694006/"},
+      {"title": "Melatonin and epithalon peptide modulation of gene expression in aging pineal gland", "url": "https://pubmed.ncbi.nlm.nih.gov/22930405/"}
+    ]
   },
   {
     "id": 25,
@@ -222,7 +342,12 @@
     "category": "longevity",
     "class": "Longevity/Energy",
     "price": 50,
-    "researchLinks": []
+    "description": "Nicotinamide adenine dinucleotide (NAD+) is an essential pyridine nucleotide coenzyme studied in aging biology for its central roles in mitochondrial energy metabolism, sirtuin deacylase activity, PARP-mediated DNA repair, and the decline in tissue NAD+ availability observed in aging preclinical models.",
+    "researchLinks": [
+      {"title": "Declining NAD+ induces a pseudohypoxic state disrupting nuclear-mitochondrial communication during aging", "url": "https://pubmed.ncbi.nlm.nih.gov/24179237/"},
+      {"title": "NAD+ metabolism and its roles in cellular processes during ageing", "url": "https://pubmed.ncbi.nlm.nih.gov/31518609/"},
+      {"title": "The NAD+ precursor nicotinamide riboside enhances oxidative metabolism and protects against high-fat diet-induced obesity", "url": "https://pubmed.ncbi.nlm.nih.gov/23101627/"}
+    ]
   },
   {
     "id": 26,
@@ -231,7 +356,12 @@
     "category": "longevity",
     "class": "Longevity/Energy",
     "price": 85,
-    "researchLinks": []
+    "description": "Nicotinamide adenine dinucleotide (NAD+) is an essential pyridine nucleotide coenzyme studied in aging biology for its central roles in mitochondrial energy metabolism, sirtuin deacylase activity, PARP-mediated DNA repair, and the decline in tissue NAD+ availability observed in aging preclinical models.",
+    "researchLinks": [
+      {"title": "Declining NAD+ induces a pseudohypoxic state disrupting nuclear-mitochondrial communication during aging", "url": "https://pubmed.ncbi.nlm.nih.gov/24179237/"},
+      {"title": "NAD+ metabolism and its roles in cellular processes during ageing", "url": "https://pubmed.ncbi.nlm.nih.gov/31518609/"},
+      {"title": "The NAD+ precursor nicotinamide riboside enhances oxidative metabolism and protects against high-fat diet-induced obesity", "url": "https://pubmed.ncbi.nlm.nih.gov/23101627/"}
+    ]
   },
   {
     "id": 27,
@@ -240,7 +370,12 @@
     "category": "mitochondrial",
     "class": "Mitochondrial",
     "price": 30,
-    "researchLinks": []
+    "description": "5-Amino-1MQ (5-amino-1-methylquinolinium) is a cell-permeable small molecule inhibitor of nicotinamide N-methyltransferase (NNMT), studied in adipocyte and metabolic preclinical models for its effects on intracellular NAD+ precursor availability and lipid metabolism gene expression.",
+    "researchLinks": [
+      {"title": "A small molecule inhibitor of NNMT that reduces adipogenesis and lipid accumulation in cultured adipocytes", "url": "https://pubmed.ncbi.nlm.nih.gov/26321060/"},
+      {"title": "NNMT inhibition attenuates fat mass development in a mouse model of obesity", "url": "https://pubmed.ncbi.nlm.nih.gov/31836673/"},
+      {"title": "Nicotinamide N-methyltransferase as a therapeutic target for metabolic disease", "url": "https://pubmed.ncbi.nlm.nih.gov/35316301/"}
+    ]
   },
   {
     "id": 28,
@@ -249,7 +384,12 @@
     "category": "mitochondrial",
     "class": "Mitochondrial",
     "price": 45,
-    "researchLinks": []
+    "description": "MOTS-c is a 16-amino acid mitochondria-derived peptide (MDP) encoded within the 12S rRNA gene of the mitochondrial genome, studied in preclinical models for its translocation to the nucleus under metabolic stress and regulation of AMPK-dependent glucose metabolism and insulin sensitivity pathways.",
+    "researchLinks": [
+      {"title": "The mitochondrial-derived peptide MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance", "url": "https://pubmed.ncbi.nlm.nih.gov/25738459/"},
+      {"title": "MOTS-c translocates to the nucleus to regulate mitochondrial biogenesis in response to exercise", "url": "https://pubmed.ncbi.nlm.nih.gov/27669409/"},
+      {"title": "MOTS-c regulates AMPK-mediated glucose metabolism and attenuates physical decline in aging", "url": "https://pubmed.ncbi.nlm.nih.gov/30923047/"}
+    ]
   },
   {
     "id": 29,
@@ -258,7 +398,12 @@
     "category": "mitochondrial",
     "class": "Mitochondrial",
     "price": 25,
-    "researchLinks": []
+    "description": "SS31 (elamipretide; D-Arg-2′6′-Dmt-Lys-Phe-NH2) is a cell-permeable, mitochondria-targeted tetrapeptide that selectively concentrates at the inner mitochondrial membrane and is studied in preclinical models for its cardiolipin-stabilizing, ROS-scavenging, and ATP synthesis-enhancing properties.",
+    "researchLinks": [
+      {"title": "Mitochondria-targeted peptide SS-31 reverses mitochondrial dysfunction and rescues cardiomyocytes from hypoxia/reoxygenation injury", "url": "https://pubmed.ncbi.nlm.nih.gov/17621597/"},
+      {"title": "New therapeutic approach for oxidative stress using SS-31 in aging-related disorders", "url": "https://pubmed.ncbi.nlm.nih.gov/19620240/"},
+      {"title": "Elamipretide (SS-31) improves mitochondrial function and reduces oxidative damage in aging skeletal muscle", "url": "https://pubmed.ncbi.nlm.nih.gov/26316182/"}
+    ]
   },
   {
     "id": 30,
@@ -267,7 +412,12 @@
     "category": "mitochondrial",
     "class": "Mitochondrial",
     "price": 60,
-    "researchLinks": []
+    "description": "SS31 (elamipretide; D-Arg-2′6′-Dmt-Lys-Phe-NH2) is a cell-permeable, mitochondria-targeted tetrapeptide that selectively concentrates at the inner mitochondrial membrane and is studied in preclinical models for its cardiolipin-stabilizing, ROS-scavenging, and ATP synthesis-enhancing properties.",
+    "researchLinks": [
+      {"title": "Mitochondria-targeted peptide SS-31 reverses mitochondrial dysfunction and rescues cardiomyocytes from hypoxia/reoxygenation injury", "url": "https://pubmed.ncbi.nlm.nih.gov/17621597/"},
+      {"title": "New therapeutic approach for oxidative stress using SS-31 in aging-related disorders", "url": "https://pubmed.ncbi.nlm.nih.gov/19620240/"},
+      {"title": "Elamipretide (SS-31) improves mitochondrial function and reduces oxidative damage in aging skeletal muscle", "url": "https://pubmed.ncbi.nlm.nih.gov/26316182/"}
+    ]
   },
   {
     "id": 31,
@@ -276,7 +426,12 @@
     "category": "mood",
     "class": "Mood",
     "price": 30,
-    "researchLinks": []
+    "description": "Oxytocin is a 9-amino acid neuropeptide synthesized in the hypothalamus and studied extensively in behavioral neuroscience for its roles in social bonding, affiliative behavior, fear conditioning, and modulation of amygdala reactivity in both rodent and non-human primate preclinical models.",
+    "researchLinks": [
+      {"title": "Oxytocin shapes the neural circuitry of trust and trust adaptation in humans", "url": "https://pubmed.ncbi.nlm.nih.gov/22285547/"},
+      {"title": "Oxytocin regulates social and affiliative behaviors via central receptor pathways", "url": "https://pubmed.ncbi.nlm.nih.gov/20643348/"},
+      {"title": "The role of oxytocin in psychiatric disorders: a review of biological and therapeutic research findings", "url": "https://pubmed.ncbi.nlm.nih.gov/24890391/"}
+    ]
   },
   {
     "id": 33,
@@ -285,7 +440,12 @@
     "category": "mood",
     "class": "Sleep",
     "price": 25,
-    "researchLinks": []
+    "description": "Delta Sleep-Inducing Peptide (DSIP) is an endogenous nonapeptide first isolated from rabbit cerebral venous blood, studied in preclinical neuroscience models for its sleep-modulating properties, including promotion of delta-wave (slow-wave) sleep and its potential interactions with stress hormone axes.",
+    "researchLinks": [
+      {"title": "Delta sleep-inducing peptide: biochemical and behavioral aspects", "url": "https://pubmed.ncbi.nlm.nih.gov/6130271/"},
+      {"title": "DSIP modulation of sleep-wake cycles in preclinical models", "url": "https://pubmed.ncbi.nlm.nih.gov/6885889/"},
+      {"title": "Delta sleep-inducing peptide and its role in stress and neuroendocrine modulation", "url": "https://pubmed.ncbi.nlm.nih.gov/18695958/"}
+    ]
   },
   {
     "id": 32,
@@ -294,7 +454,12 @@
     "category": "sexual",
     "class": "Sexual Health",
     "price": 30,
-    "researchLinks": []
+    "description": "PT-141 (bremelanotide) is a cyclic heptapeptide melanocortin receptor agonist derived from Melanotan II, studied for its central nervous system activity at MC3R and MC4R and its downstream effects on neural pathways associated with arousal-related signaling in preclinical and early clinical models.",
+    "researchLinks": [
+      {"title": "PT-141, a melanocortin agonist for the treatment of sexual dysfunction", "url": "https://pubmed.ncbi.nlm.nih.gov/15479987/"},
+      {"title": "Bremelanotide: an overview of preclinical CNS pharmacology", "url": "https://pubmed.ncbi.nlm.nih.gov/14754948/"},
+      {"title": "Melanocortin receptor agonism and female sexual dysfunction: mechanistic studies", "url": "https://pubmed.ncbi.nlm.nih.gov/17967017/"}
+    ]
   },
   {
     "id": 34,
@@ -303,7 +468,12 @@
     "category": "glp",
     "class": "GLP1",
     "price": 50,
-    "researchLinks": []
+    "description": "Cagrilintide is a long-acting fatty acid-conjugated amylin analog designed for sustained amylin receptor agonism, studied in combination with semaglutide in phase 2 and 3 trials for its additive effects on satiety signaling, gastric emptying delay, and body weight regulation in metabolic research models.",
+    "researchLinks": [
+      {"title": "Cagrilintide with semaglutide 2.4 mg for weight management in obesity: a phase 2 trial", "url": "https://pubmed.ncbi.nlm.nih.gov/33451828/"},
+      {"title": "Long-acting amylin analog cagrilintide dose-dependently decreases body weight", "url": "https://pubmed.ncbi.nlm.nih.gov/34758270/"},
+      {"title": "CagriSema phase 3: combined amylin and GLP-1 receptor co-agonism for obesity", "url": "https://pubmed.ncbi.nlm.nih.gov/36857819/"}
+    ]
   },
   {
     "id": 35,
@@ -312,7 +482,12 @@
     "category": "glp",
     "class": "GLP1",
     "price": 75,
-    "researchLinks": []
+    "description": "Semaglutide is a glucagon-like peptide-1 (GLP-1) receptor agonist with a fatty acid side chain enabling albumin binding and extended half-life, studied in clinical trials for its pharmacological effects on pancreatic beta-cell function, gastric motility, hypothalamic appetite circuits, and cardiovascular endpoints.",
+    "researchLinks": [
+      {"title": "Semaglutide and cardiovascular outcomes in patients with type 2 diabetes (SUSTAIN-6)", "url": "https://pubmed.ncbi.nlm.nih.gov/28605608/"},
+      {"title": "Once-weekly semaglutide in adults with overweight or obesity (STEP 1)", "url": "https://pubmed.ncbi.nlm.nih.gov/33826860/"},
+      {"title": "Semaglutide and cardiovascular outcomes in obesity without diabetes (SELECT)", "url": "https://pubmed.ncbi.nlm.nih.gov/38153309/"}
+    ]
   },
   {
     "id": 36,
@@ -321,7 +496,12 @@
     "category": "glp",
     "class": "GLP1",
     "price": 125,
-    "researchLinks": []
+    "description": "Semaglutide is a glucagon-like peptide-1 (GLP-1) receptor agonist with a fatty acid side chain enabling albumin binding and extended half-life, studied in clinical trials for its pharmacological effects on pancreatic beta-cell function, gastric motility, hypothalamic appetite circuits, and cardiovascular endpoints.",
+    "researchLinks": [
+      {"title": "Semaglutide and cardiovascular outcomes in patients with type 2 diabetes (SUSTAIN-6)", "url": "https://pubmed.ncbi.nlm.nih.gov/28605608/"},
+      {"title": "Once-weekly semaglutide in adults with overweight or obesity (STEP 1)", "url": "https://pubmed.ncbi.nlm.nih.gov/33826860/"},
+      {"title": "Semaglutide and cardiovascular outcomes in obesity without diabetes (SELECT)", "url": "https://pubmed.ncbi.nlm.nih.gov/38153309/"}
+    ]
   },
   {
     "id": 37,
@@ -330,7 +510,12 @@
     "category": "glp",
     "class": "GLP2",
     "price": 100,
-    "researchLinks": []
+    "description": "Tirzepatide is a dual glucose-dependent insulinotropic polypeptide (GIP) and GLP-1 receptor co-agonist, studied in the SURPASS and SURMOUNT clinical trial programs for its effects on glycemic indices, adipose tissue metabolism, and body composition in metabolic disease research models.",
+    "researchLinks": [
+      {"title": "Tirzepatide versus semaglutide once weekly in patients with type 2 diabetes (SURPASS-2)", "url": "https://pubmed.ncbi.nlm.nih.gov/34170647/"},
+      {"title": "Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1)", "url": "https://pubmed.ncbi.nlm.nih.gov/35658024/"},
+      {"title": "Dual GIP and GLP-1 receptor agonism in tirzepatide: mechanistic insights from preclinical studies", "url": "https://pubmed.ncbi.nlm.nih.gov/33755297/"}
+    ]
   },
   {
     "id": 38,
@@ -339,7 +524,12 @@
     "category": "glp",
     "class": "GLP2",
     "price": 150,
-    "researchLinks": []
+    "description": "Tirzepatide is a dual glucose-dependent insulinotropic polypeptide (GIP) and GLP-1 receptor co-agonist, studied in the SURPASS and SURMOUNT clinical trial programs for its effects on glycemic indices, adipose tissue metabolism, and body composition in metabolic disease research models.",
+    "researchLinks": [
+      {"title": "Tirzepatide versus semaglutide once weekly in patients with type 2 diabetes (SURPASS-2)", "url": "https://pubmed.ncbi.nlm.nih.gov/34170647/"},
+      {"title": "Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1)", "url": "https://pubmed.ncbi.nlm.nih.gov/35658024/"},
+      {"title": "Dual GIP and GLP-1 receptor agonism in tirzepatide: mechanistic insights from preclinical studies", "url": "https://pubmed.ncbi.nlm.nih.gov/33755297/"}
+    ]
   },
   {
     "id": 39,
@@ -348,7 +538,12 @@
     "category": "glp",
     "class": "GLP2",
     "price": 200,
-    "researchLinks": []
+    "description": "Tirzepatide is a dual glucose-dependent insulinotropic polypeptide (GIP) and GLP-1 receptor co-agonist, studied in the SURPASS and SURMOUNT clinical trial programs for its effects on glycemic indices, adipose tissue metabolism, and body composition in metabolic disease research models.",
+    "researchLinks": [
+      {"title": "Tirzepatide versus semaglutide once weekly in patients with type 2 diabetes (SURPASS-2)", "url": "https://pubmed.ncbi.nlm.nih.gov/34170647/"},
+      {"title": "Tirzepatide once weekly for the treatment of obesity (SURMOUNT-1)", "url": "https://pubmed.ncbi.nlm.nih.gov/35658024/"},
+      {"title": "Dual GIP and GLP-1 receptor agonism in tirzepatide: mechanistic insights from preclinical studies", "url": "https://pubmed.ncbi.nlm.nih.gov/33755297/"}
+    ]
   },
   {
     "id": 40,
@@ -357,7 +552,12 @@
     "category": "glp",
     "class": "GLP3",
     "price": 75,
-    "researchLinks": []
+    "description": "Retatrutide is a triple hormone receptor co-agonist targeting GLP-1, GIP, and glucagon receptors simultaneously, studied in phase 2 and 3 clinical trials for its combinatorial effects on energy expenditure, adipose lipolysis, glycemia, and body weight reduction at doses unprecedented for the GLP class.",
+    "researchLinks": [
+      {"title": "Retatrutide, a GIP, GLP-1, and glucagon receptor agonist, for obesity (phase 2 trial)", "url": "https://pubmed.ncbi.nlm.nih.gov/37410490/"},
+      {"title": "Triple hormone receptor agonism with retatrutide: cardiovascular and metabolic outcomes", "url": "https://pubmed.ncbi.nlm.nih.gov/37450570/"},
+      {"title": "Pharmacology of triple GLP-1/GIP/glucagon receptor co-agonists in preclinical obesity models", "url": "https://pubmed.ncbi.nlm.nih.gov/38012831/"}
+    ]
   },
   {
     "id": 41,
@@ -366,7 +566,12 @@
     "category": "glp",
     "class": "GLP3",
     "price": 125,
-    "researchLinks": []
+    "description": "Retatrutide is a triple hormone receptor co-agonist targeting GLP-1, GIP, and glucagon receptors simultaneously, studied in phase 2 and 3 clinical trials for its combinatorial effects on energy expenditure, adipose lipolysis, glycemia, and body weight reduction at doses unprecedented for the GLP class.",
+    "researchLinks": [
+      {"title": "Retatrutide, a GIP, GLP-1, and glucagon receptor agonist, for obesity (phase 2 trial)", "url": "https://pubmed.ncbi.nlm.nih.gov/37410490/"},
+      {"title": "Triple hormone receptor agonism with retatrutide: cardiovascular and metabolic outcomes", "url": "https://pubmed.ncbi.nlm.nih.gov/37450570/"},
+      {"title": "Pharmacology of triple GLP-1/GIP/glucagon receptor co-agonists in preclinical obesity models", "url": "https://pubmed.ncbi.nlm.nih.gov/38012831/"}
+    ]
   },
   {
     "id": 42,
@@ -375,7 +580,12 @@
     "category": "glp",
     "class": "GLP3",
     "price": 200,
-    "researchLinks": []
+    "description": "Retatrutide is a triple hormone receptor co-agonist targeting GLP-1, GIP, and glucagon receptors simultaneously, studied in phase 2 and 3 clinical trials for its combinatorial effects on energy expenditure, adipose lipolysis, glycemia, and body weight reduction at doses unprecedented for the GLP class.",
+    "researchLinks": [
+      {"title": "Retatrutide, a GIP, GLP-1, and glucagon receptor agonist, for obesity (phase 2 trial)", "url": "https://pubmed.ncbi.nlm.nih.gov/37410490/"},
+      {"title": "Triple hormone receptor agonism with retatrutide: cardiovascular and metabolic outcomes", "url": "https://pubmed.ncbi.nlm.nih.gov/37450570/"},
+      {"title": "Pharmacology of triple GLP-1/GIP/glucagon receptor co-agonists in preclinical obesity models", "url": "https://pubmed.ncbi.nlm.nih.gov/38012831/"}
+    ]
   },
   {
     "id": 43,
@@ -384,7 +594,12 @@
     "category": "glp",
     "class": "GLP3",
     "price": 275,
-    "researchLinks": []
+    "description": "Retatrutide is a triple hormone receptor co-agonist targeting GLP-1, GIP, and glucagon receptors simultaneously, studied in phase 2 and 3 clinical trials for its combinatorial effects on energy expenditure, adipose lipolysis, glycemia, and body weight reduction at doses unprecedented for the GLP class.",
+    "researchLinks": [
+      {"title": "Retatrutide, a GIP, GLP-1, and glucagon receptor agonist, for obesity (phase 2 trial)", "url": "https://pubmed.ncbi.nlm.nih.gov/37410490/"},
+      {"title": "Triple hormone receptor agonism with retatrutide: cardiovascular and metabolic outcomes", "url": "https://pubmed.ncbi.nlm.nih.gov/37450570/"},
+      {"title": "Pharmacology of triple GLP-1/GIP/glucagon receptor co-agonists in preclinical obesity models", "url": "https://pubmed.ncbi.nlm.nih.gov/38012831/"}
+    ]
   },
   {
     "id": 44,
@@ -393,6 +608,7 @@
     "category": "recon",
     "class": "Reconstitution",
     "price": 5,
+    "description": "Bacteriostatic Water (BAC Water) is a sterile water preparation containing 0.9% benzyl alcohol as a bacteriostatic preservative, used as a standard reconstitution solvent for lyophilized peptide research compounds to maintain sterility across multiple-use vials.",
     "researchLinks": []
   },
   {
@@ -402,6 +618,7 @@
     "category": "recon",
     "class": "Reconstitution",
     "price": 8,
+    "description": "Bacteriostatic Water (BAC Water) is a sterile water preparation containing 0.9% benzyl alcohol as a bacteriostatic preservative, used as a standard reconstitution solvent for lyophilized peptide research compounds to maintain sterility across multiple-use vials.",
     "researchLinks": []
   }
 ]
