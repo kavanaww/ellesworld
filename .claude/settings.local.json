@@ -26,7 +26,8 @@
       "PowerShell($d = Get-Content -Raw c:\\\\Users\\\\timot\\\\ellesworld\\\\products.json | ConvertFrom-Json; \"count = $\\($d.Count\\)\"; \"Retatrutide variants: $\\(\\($d | Where-Object { $_.group -eq 'Retatrutide' } | ForEach-Object { $_.variant }\\) -join ', '\\)\"; \"id 43 present: $\\(\\($d | Where-Object { $_.id -eq 43 }\\) -ne $null\\)\")",
       "PowerShell($content = Get-Content -Raw c:\\\\Users\\\\timot\\\\ellesworld\\\\pages\\\\shop.html; $openDivs = \\([regex]::Matches\\($content, '<div\\\\b'\\)\\).Count; $closeDivs = \\([regex]::Matches\\($content, '</div>'\\)\\).Count; \"div open=$openDivs close=$closeDivs\"; $openScript = \\([regex]::Matches\\($content, '<script\\\\b'\\)\\).Count; $closeScript = \\([regex]::Matches\\($content, '</script>'\\)\\).Count; \"script open=$openScript close=$closeScript\"; $openFn = \\([regex]::Matches\\($content, '\\\\bfunction\\\\s+\\\\w+'\\)\\).Count; \"function declarations=$openFn\"; $braceOpen = \\($content.ToCharArray\\(\\) | Where-Object { $_ -eq '{' }\\).Count; $braceClose = \\($content.ToCharArray\\(\\) | Where-Object { $_ -eq '}' }\\).Count; \"braces open=$braceOpen close=$braceClose\")",
       "PowerShell(Remove-Item c:\\\\Users\\\\timot\\\\ellesworld\\\\shop.html; if \\(-not \\(Test-Path c:\\\\Users\\\\timot\\\\ellesworld\\\\shop.html\\)\\) { \"Deleted\" } else { \"Still present\" })",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
