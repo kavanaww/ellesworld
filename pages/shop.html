@@ -360,7 +360,7 @@ function ewEnterSite(){
 
     <div class="cart-total"><span>Total Due</span><span id="cartTotal">$0.00</span></div>
     <button class="checkout-btn" onclick="openCheckout()">Proceed to Order →</button>
-    <p class="venmo-note">💙 Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) = 10% off &nbsp;&middot;&nbsp; Zelle (<a href="tel:7072919669">(707) 291-9669</a>) = standard pricing</p>
+    <p class="venmo-note">💜 Zelle (<a href="tel:7072919669">(707) 291-9669</a>) = 10% off &nbsp;&middot;&nbsp; Venmo (<a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>) &amp; Apple Pay = standard pricing</p>
   </div>
 </div>
 
@@ -378,23 +378,35 @@ function ewEnterSite(){
       <!-- Payment Method -->
       <div style="margin:12px 0 10px;">
         <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:8px;">Payment Method</label>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-          <div id="venmoBtn" onclick="selectModalPayment('venmo')" style="border:2px solid #9B1B1B;background:#fdf5f5;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;">
+          <div id="venmoBtn" onclick="selectModalPayment('venmo')" style="border:2px solid #E8E2DA;background:#fff;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
             <div style="font-size:16px;margin-bottom:2px;">💙</div>
             <div style="font-weight:700;font-size:13px;">Venmo</div>
-            <div style="font-size:11px;color:#9B1B1B;font-weight:600;">10% off automatically</div>
+            <div style="font-size:11px;color:#888;">Standard pricing</div>
             <div style="font-size:10px;color:#888;"><a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a></div>
           </div>
-          <div id="zelleBtn" onclick="selectModalPayment('zelle')" style="border:2px solid #E8E2DA;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
+          <div id="zelleBtn" onclick="selectModalPayment('zelle')" style="border:2px solid #9B1B1B;background:#fdf5f5;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
             <div style="font-size:16px;margin-bottom:2px;">💜</div>
             <div style="font-weight:700;font-size:13px;">Zelle</div>
+            <div style="font-size:11px;color:#9B1B1B;font-weight:600;">10% off automatically</div>
+            <div style="font-size:10px;color:#888;"><a href="tel:7072919669">(707) 291-9669</a></div>
+          </div>
+          <div id="applePayBtn" onclick="selectModalPayment('applepay')" style="border:2px solid #E8E2DA;background:#fff;border-radius:8px;padding:10px;text-align:center;cursor:pointer;">
+            <div style="font-size:16px;margin-bottom:2px;">🍎</div>
+            <div style="font-weight:700;font-size:13px;">Apple Pay</div>
             <div style="font-size:11px;color:#888;">Standard pricing</div>
             <div style="font-size:10px;color:#888;"><a href="tel:7072919669">(707) 291-9669</a></div>
           </div>
         </div>
       </div>
 
-      <!-- Promo Code (Zelle only) -->
+      <!-- Memo Disclaimer -->
+      <div style="background:#fffbe6;border:1.5px solid #f5c842;border-radius:8px;padding:12px 14px;margin-bottom:14px;font-size:13px;line-height:1.5;color:#5a4a00;">
+        <strong style="display:block;margin-bottom:4px;color:#9B1B1B;font-size:13px;letter-spacing:0.03em;">⚠️ IMPORTANT</strong>
+        In the payment memo field, write only <strong>"thank you"</strong> — do <strong>NOT</strong> reference peptides, research, or any product names. Orders with references to peptides will be refunded and cancelled.
+      </div>
+
+      <!-- Promo Code (Venmo / Apple Pay only) -->
       <div id="modalPromoRow" style="display:none;margin-bottom:10px;">
         <label style="display:block;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A4A4A;margin-bottom:6px;">Promo Code</label>
         <div style="display:flex;gap:8px;">
@@ -521,7 +533,7 @@ const CATEGORIES = [
 ];
 
 let cart = [];
-let activePayment = "venmo";
+let activePayment = "zelle";
 let appliedPromo = null;
 const PROMO_CODES = { "BECCA": 0.10, "MARRI": 0.10 };
 
@@ -740,42 +752,58 @@ function openCheckout() {
   modalShipping = cartShipping ? cartShipping.value : "standard";
   // Carry promo from cart
   modalPromo = appliedPromo || null;
-  if (modalPromo) {
-    document.getElementById("modalPromoInput") && (document.getElementById("modalPromoInput").value = modalPromo);
-  }
-  modalPayment = "venmo";
-  renderStep1();
+  modalPayment = "zelle";
   document.getElementById("modalOverlay").classList.add("open");
+  renderStep1();
+  selectModalPayment(modalPayment);
 }
 
-let modalPayment = "venmo";
+let modalPayment = "zelle";
 let modalPromo = null;
 let modalShipping = "standard";
 
 function selectModalPayment(method) {
   modalPayment = method;
-  const venmoBtn = document.getElementById("venmoBtn");
-  const zelleBtn = document.getElementById("zelleBtn");
-  if (method === "venmo") {
-    venmoBtn.style.border = "2px solid #9B1B1B";
-    venmoBtn.style.background = "#fdf5f5";
-    zelleBtn.style.border = "2px solid #E8E2DA";
-    zelleBtn.style.background = "#fff";
-    document.getElementById("modalPromoRow").style.display = "none";
+  const btns = {
+    venmo: document.getElementById("venmoBtn"),
+    zelle: document.getElementById("zelleBtn"),
+    applepay: document.getElementById("applePayBtn")
+  };
+  Object.keys(btns).forEach(key => {
+    if (!btns[key]) return;
+    if (key === method) {
+      btns[key].style.border = "2px solid #9B1B1B";
+      btns[key].style.background = "#fdf5f5";
+    } else {
+      btns[key].style.border = "2px solid #E8E2DA";
+      btns[key].style.background = "#fff";
+    }
+  });
+
+  const promoRow = document.getElementById("modalPromoRow");
+  const promoInput = document.getElementById("modalPromoInput");
+  const promoMsg = document.getElementById("modalPromoMsg");
+
+  if (method === "zelle") {
+    // Zelle gets auto 10% — promo not stackable, clear and hide
+    if (promoRow) promoRow.style.display = "none";
     modalPromo = null;
-    document.getElementById("modalPromoMsg").textContent = "";
+    if (promoInput) promoInput.value = "";
+    if (promoMsg) promoMsg.textContent = "";
   } else {
-    zelleBtn.style.border = "2px solid #9B1B1B";
-    zelleBtn.style.background = "#fdf5f5";
-    venmoBtn.style.border = "2px solid #E8E2DA";
-    venmoBtn.style.background = "#fff";
-    document.getElementById("modalPromoRow").style.display = "block";
-    // Re-apply cart promo if exists
-    if (appliedPromo) {
+    // Venmo / Apple Pay — show promo field, restore any cart-applied promo
+    if (promoRow) promoRow.style.display = "block";
+    if (appliedPromo && PROMO_CODES[appliedPromo]) {
       modalPromo = appliedPromo;
-      document.getElementById("modalPromoInput").value = appliedPromo;
-      document.getElementById("modalPromoMsg").style.color = "#2a7a2a";
-      document.getElementById("modalPromoMsg").textContent = "✓ " + appliedPromo + " applied";
+      if (promoInput) promoInput.value = appliedPromo;
+      if (promoMsg) {
+        promoMsg.style.color = "#2a7a2a";
+        promoMsg.textContent = "✓ " + appliedPromo + " applied";
+      }
+    } else {
+      modalPromo = null;
+      if (promoInput) promoInput.value = "";
+      if (promoMsg) promoMsg.textContent = "";
     }
   }
   renderModalSummary();
@@ -816,7 +844,7 @@ function applyCartPromo() {
 }
 
 function getModalDiscount() {
-  if (modalPayment === "venmo") return 0.10;
+  if (modalPayment === "zelle") return 0.10;
   if (modalPromo && PROMO_CODES[modalPromo]) return PROMO_CODES[modalPromo];
   return 0;
 }
@@ -844,7 +872,7 @@ function renderModalSummary() {
 
   let s = "";
   if (discount > 0) {
-    const discLabel = modalPayment === "venmo" ? "💙 Venmo Discount (10%)" : `🏷️ Promo: ${modalPromo} (${discount*100}% off)`;
+    const discLabel = modalPayment === "zelle" ? "💜 Zelle Discount (10%)" : `🏷️ Promo: ${modalPromo} (${discount*100}% off)`;
     s += `<div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #E8E2DA;color:#2a7a2a;font-size:13px;"><span>${discLabel}</span><span>-$${discountAmt.toFixed(2)}</span></div>`;
   }
   const shippingLabel = modalShipping === "twoday" ? "2-Day Shipping" : "Standard Shipping";
@@ -870,11 +898,24 @@ function goToStep2() {
 
   // Set hidden fields
   document.getElementById("hiddenOrderItems").value = cart.map(i => `${i.group} ${i.variant} x${i.qty} ($${(i.price*i.qty).toFixed(2)})`).join(" | ");
-  const discLabel = modalPayment === "venmo" ? "Venmo 10%" : (modalPromo ? `Promo ${modalPromo} ${PROMO_CODES[modalPromo]*100}%` : "none");
+  let discLabel;
+  if (modalPayment === "zelle") discLabel = "Zelle 10%";
+  else if (modalPromo) discLabel = `Promo ${modalPromo} ${PROMO_CODES[modalPromo]*100}%`;
+  else discLabel = "none";
   document.getElementById("hiddenOrderTotal").value = `Subtotal: $${subtotal.toFixed(2)} | Discount: ${discLabel} -$${discountAmt.toFixed(2)} | Shipping: ${modalShipping === "twoday" ? "2-Day $30" : (shippingCost === 0 ? "FREE" : "Standard $10")} | TOTAL DUE: $${total.toFixed(2)}`;
-  document.getElementById("hiddenPayment").value = modalPayment === "venmo" ? "Venmo @EllesWorldResearch" : "Zelle (707) 291-9669";
+  let paymentLabel;
+  if (modalPayment === "venmo") paymentLabel = "Venmo @EllesWorldResearch";
+  else if (modalPayment === "zelle") paymentLabel = "Zelle (707) 291-9669";
+  else paymentLabel = "Apple Pay (707) 291-9669";
+  document.getElementById("hiddenPayment").value = paymentLabel;
   document.getElementById("hiddenPromo").value = modalPromo || "none";
   document.getElementById("hiddenShipping").value = modalShipping === "twoday" ? "2-Day $30" : (shippingCost === 0 ? "Standard FREE" : "Standard $10");
+
+  // Payment display for step 2 mini summary
+  let payInfo;
+  if (modalPayment === "venmo") payInfo = `Venmo <a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>`;
+  else if (modalPayment === "zelle") payInfo = `Zelle <a href="tel:7072919669">(707) 291-9669</a>`;
+  else payInfo = `Apple Pay <a href="tel:7072919669">(707) 291-9669</a>`;
 
   // Mini summary for step 2
   document.getElementById("step2Summary").innerHTML = `
@@ -883,7 +924,7 @@ function goToStep2() {
     <div style="border-top:1px solid #E8E2DA;margin-top:6px;padding-top:6px;display:flex;justify-content:space-between;font-weight:700;color:#9B1B1B;">
       <span>Total Due</span><span>$${total.toFixed(2)}</span>
     </div>
-    <div style="font-size:11px;color:#888;margin-top:4px;">Payment: ${modalPayment === "venmo" ? `Venmo <a href="https://venmo.com/EllesWorldResearch" target="_blank">@EllesWorldResearch</a>` : `Zelle <a href="tel:7072919669">(707) 291-9669</a>`}</div>`;
+    <div style="font-size:11px;color:#888;margin-top:4px;">Payment: ${payInfo}</div>`;
 
   document.getElementById("step1").style.display = "none";
   document.getElementById("step2").style.display = "block";
@@ -943,9 +984,14 @@ document.addEventListener("DOMContentLoaded", function() {
         headers: { Accept: "application/json" }
       }).then(r => {
         if (r.ok) {
-          const payMsg = modalPayment === "venmo"
-            ? `Please send <strong>$${total}</strong> to <a href="https://venmo.com/EllesWorldResearch" target="_blank"><strong>@EllesWorldResearch</strong></a> on Venmo to complete your purchase.`
-            : `Please send <strong>$${total}</strong> via Zelle to <a href="tel:7072919669"><strong>(707) 291-9669</strong></a> to complete your purchase.`;
+          let payMsg;
+          if (modalPayment === "venmo") {
+            payMsg = `Please send <strong>$${total}</strong> to <a href="https://venmo.com/EllesWorldResearch" target="_blank"><strong>@EllesWorldResearch</strong></a> on Venmo to complete your purchase.`;
+          } else if (modalPayment === "zelle") {
+            payMsg = `Please send <strong>$${total}</strong> via Zelle to <a href="tel:7072919669"><strong>(707) 291-9669</strong></a> to complete your purchase.`;
+          } else {
+            payMsg = `Please send <strong>$${total}</strong> via Apple Pay to <a href="tel:7072919669"><strong>(707) 291-9669</strong></a> to complete your purchase.`;
+          }
           document.getElementById("confirmMsg").innerHTML = "Elle\'s World Research has your order and will be in touch shortly.<br><br>" + payMsg;
           document.getElementById("step2").style.display = "none";
           document.getElementById("step3").style.display = "block";

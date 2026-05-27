@@ -588,20 +588,6 @@
     ]
   },
   {
-    "id": 43,
-    "group": "Retatrutide",
-    "variant": "75mg",
-    "category": "glp",
-    "class": "GLP3",
-    "price": 275,
-    "description": "Retatrutide is a triple hormone receptor co-agonist targeting GLP-1, GIP, and glucagon receptors simultaneously, studied in phase 2 and 3 clinical trials for its combinatorial effects on energy expenditure, adipose lipolysis, glycemia, and body weight reduction at doses unprecedented for the GLP class.",
-    "researchLinks": [
-      {"title": "Retatrutide, a GIP, GLP-1, and glucagon receptor agonist, for obesity (phase 2 trial)", "url": "https://pubmed.ncbi.nlm.nih.gov/37410490/"},
-      {"title": "Triple hormone receptor agonism with retatrutide: cardiovascular and metabolic outcomes", "url": "https://pubmed.ncbi.nlm.nih.gov/37450570/"},
-      {"title": "Pharmacology of triple GLP-1/GIP/glucagon receptor co-agonists in preclinical obesity models", "url": "https://pubmed.ncbi.nlm.nih.gov/38012831/"}
-    ]
-  },
-  {
     "id": 44,
     "group": "BAC Water",
     "variant": "3mL",
